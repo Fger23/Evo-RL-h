@@ -31,8 +31,8 @@ cd ~/code/Evo-RL
 
 # Replace these two values before running.
 # PI05_POLICY must be accessible to both the client and server.
-export RTC_SERVER_IP="REPLACE_WITH_H200_SERVER_IP"
-export PI05_POLICY="REPLACE_WITH_PI05_CHECKPOINT_OR_HF_REPO"
+export RTC_SERVER_IP="10.61.20.47"
+export PI05_POLICY="/nfs/lerobot/s101/models/evo/so101/policy/banknote_binding_0805_06_pi05/checkpoints/last/pretrained_model"
 
 # Optional connectivity check:
 nc -vz "$RTC_SERVER_IP" 8090
