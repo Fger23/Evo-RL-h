@@ -1,0 +1,13 @@
+{
+  "base_path": null,
+  "device": "cpu",
+  "mode": "shared",
+  "tasks": [
+    "bundles/A",
+    "bundles/B"
+  ],
+  "offline_observations": {
+    "A": "observations/A.npz",
+    "B": "observations/B.npz"
+  }
+}

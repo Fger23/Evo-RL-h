@@ -1,0 +1,9 @@
+{
+  "peft": {
+    "target_modules": "(model\\.paligemma_with_expert\\.(paligemma\\.language_model|gemma_expert)\\.(.*\\.self_attn\\.(q|k|v|o)_proj|.*\\.mlp\\.(gate|up|down)_proj)|model\\.(action_in_proj|action_out_proj|time_mlp_in|time_mlp_out))",
+    "r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.0,
+    "full_training_modules": []
+  }
+}

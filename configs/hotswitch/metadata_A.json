@@ -1,0 +1,25 @@
+{
+  "task_id": "A",
+  "task_text": null,
+  "action_schema": {
+    "names": [],
+    "units": [],
+    "fps": null
+  },
+  "tokenizer_fingerprint": null,
+  "camera_mapping": {},
+  "rtc": {
+    "mode": "training_time",
+    "prefix_steps": null
+  },
+  "acp": {
+    "enabled": true,
+    "deployment_prompt": "positive",
+    "cfg": false,
+    "beta": 1,
+    "indicator_dropout_prob": 0.3
+  },
+  "training_source": null,
+  "target_layers": [],
+  "lerobot_features": {}
+}

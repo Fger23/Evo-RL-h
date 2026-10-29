@@ -1,0 +1,260 @@
+{
+  "label": "SIMULATED_POLICY_SIMULATED_ROBOT",
+  "physical_robot_verified": false,
+  "task_success_rate": null,
+  "device": "cpu",
+  "switches_per_mode": 200,
+  "tail_latency_note": "200 samples provide limited P99 precision",
+  "modes": {
+    "shared": {
+      "load_and_warm_s": 0.0002744999947026372,
+      "model_load_s": null,
+      "warmup_s": null,
+      "first_switch": {
+        "sample": 0,
+        "task_id": "B",
+        "session_id": "73b36a78-901f-449a-a469-3c2be46473db",
+        "policy_epoch": 2,
+        "switch_confirm_s": 0.0005994999955873936,
+        "first_valid_chunk_s": 0.002175899993744679,
+        "first_control_accept_s": 0.0029584000003524125,
+        "started": 89886.3626467,
+        "switch_ack_timestamp": 89886.3632462,
+        "first_chunk_received_timestamp": 89886.3648226,
+        "first_control_accept_timestamp": 89886.3656051,
+        "hold_including_first_action_s": 0.0029584000003524125,
+        "before_switch_rpc_s": 2.1700005163438618e-05,
+        "switch_rpc_s": 0.000577799990423955,
+        "post_ack_to_chunk_s": 0.0015763999981572852,
+        "queue_and_safety_s": 0.0007825000066077337,
+        "control_get_action_mean_s": 0.000517942855367437
+      },
+      "warm_switch_confirm": {
+        "n": 199,
+        "p50_ms": 1.0212000051978976,
+        "p95_ms": 1.2416600045980886,
+        "p99_ms": 1.3393980060936888
+      },
+      "switch_confirm": {
+        "n": 200,
+        "p50_ms": 1.019399998767767,
+        "p95_ms": 1.241280004614964,
+        "p99_ms": 1.3389990062569264
+      },
+      "first_valid_chunk": {
+        "n": 200,
+        "p50_ms": 2.6402500006952323,
+        "p95_ms": 3.215540004748618,
+        "p99_ms": 3.3705899935739576
+      },
+      "first_control_accept": {
+        "n": 200,
+        "p50_ms": 3.3528999992995523,
+        "p95_ms": 4.05236999868066,
+        "p99_ms": 4.392193999519804
+      },
+      "server_inference": {
+        "n": 600,
+        "p50_ms": 0.09805000445339829,
+        "p95_ms": 0.12442500083125195,
+        "p99_ms": 0.14942100257030688
+      },
+      "control_cycle_lateness": {
+        "n": 1400,
+        "p50_ms": 0.6315500140772201,
+        "p95_ms": 1.9838450294628274,
+        "p99_ms": 2.1996110133477482
+      },
+      "steady_server_inference": {
+        "n": 400,
+        "p50_ms": 0.09905000479193404,
+        "p95_ms": 0.12321999238338319,
+        "p99_ms": 0.14833200868451965
+      },
+      "server_inference_lock_wait": {
+        "n": 600,
+        "p50_ms": 0.0009999930625781417,
+        "p95_ms": 0.001500011421740055,
+        "p99_ms": 0.0017999991541728377
+      },
+      "server_switch_lock_wait": {
+        "n": 200,
+        "p50_ms": 0.0010999938240274787,
+        "p95_ms": 0.0014999968698248267,
+        "p99_ms": 0.0017020128143485618
+      },
+      "server_switch_commit": {
+        "n": 200,
+        "p50_ms": 0.005399997462518513,
+        "p95_ms": 0.007005008956184609,
+        "p99_ms": 0.00987500185146921
+      },
+      "acceptance_period_abs_error_including_switches": {
+        "n": 1599,
+        "p50_ms": 1.0582000011345374,
+        "p95_ms": 6.651149993704166,
+        "p99_ms": 7.025028003263287
+      },
+      "client_counters": {
+        "stale_responses": 0,
+        "stale_errors": 0,
+        "late_chunks": 0,
+        "holds": 200,
+        "accepted": 1600,
+        "bootstrap_requests": 200,
+        "queue_underruns": 0,
+        "safety_hold_seconds": 0.6813918999250745
+      },
+      "rpc_exceptions": 0,
+      "control_rpc_exceptions": 0,
+      "control_response_errors": 0,
+      "response_errors": 0,
+      "server_rejected": 0,
+      "load_counts": {
+        "base": 1,
+        "adapters": 2
+      },
+      "warmup_counts": {
+        "A": 1,
+        "B": 1
+      },
+      "memory": {
+        "unique_parameter_storage_bytes": 16384,
+        "adapter_bytes": 0,
+        "allocated": null,
+        "reserved": null,
+        "peak_allocated": null,
+        "device_total_used_bytes": null,
+        "process_used_bytes": null
+      },
+      "merged_output_equivalence": {
+        "status": "not_applicable_simulated_policy"
+      }
+    },
+    "dual": {
+      "load_and_warm_s": 0.00025680000544525683,
+      "model_load_s": null,
+      "warmup_s": null,
+      "first_switch": {
+        "sample": 0,
+        "task_id": "B",
+        "session_id": "84960cef-7175-4a29-82b5-b048becb9a04",
+        "policy_epoch": 2,
+        "switch_confirm_s": 0.0005148000054759905,
+        "first_valid_chunk_s": 0.0020249999943189323,
+        "first_control_accept_s": 0.002933700001449324,
+        "started": 89901.4431761,
+        "switch_ack_timestamp": 89901.4436909,
+        "first_chunk_received_timestamp": 89901.4452011,
+        "first_control_accept_timestamp": 89901.4461098,
+        "hold_including_first_action_s": 0.002933700001449324,
+        "before_switch_rpc_s": 2.1799991372972727e-05,
+        "switch_rpc_s": 0.0004930000141030177,
+        "post_ack_to_chunk_s": 0.0015101999888429418,
+        "queue_and_safety_s": 0.0009087000071303919,
+        "control_get_action_mean_s": 0.0006605571460178388
+      },
+      "warm_switch_confirm": {
+        "n": 199,
+        "p50_ms": 1.0463000071467832,
+        "p95_ms": 1.3351900022826158,
+        "p99_ms": 1.4326240058289843
+      },
+      "switch_confirm": {
+        "n": 200,
+        "p50_ms": 1.0462999998708256,
+        "p95_ms": 1.3346950021514201,
+        "p99_ms": 1.432412005960941
+      },
+      "first_valid_chunk": {
+        "n": 200,
+        "p50_ms": 2.7173499984201044,
+        "p95_ms": 3.3783850085455924,
+        "p99_ms": 3.4714330035785674
+      },
+      "first_control_accept": {
+        "n": 200,
+        "p50_ms": 3.5055999978794716,
+        "p95_ms": 4.180075003387174,
+        "p99_ms": 4.4100060078199
+      },
+      "server_inference": {
+        "n": 600,
+        "p50_ms": 0.09929999941959977,
+        "p95_ms": 0.13911999703850594,
+        "p99_ms": 0.17561999833560546
+      },
+      "control_cycle_lateness": {
+        "n": 1400,
+        "p50_ms": 0.6346000081975944,
+        "p95_ms": 2.0153100216703024,
+        "p99_ms": 2.289991017751163
+      },
+      "steady_server_inference": {
+        "n": 400,
+        "p50_ms": 0.09845000022323802,
+        "p95_ms": 0.12710999289993197,
+        "p99_ms": 0.16101600354886614
+      },
+      "server_inference_lock_wait": {
+        "n": 600,
+        "p50_ms": 0.001100008375942707,
+        "p95_ms": 0.0017999991541728377,
+        "p99_ms": 0.0022000021999701858
+      },
+      "server_switch_lock_wait": {
+        "n": 200,
+        "p50_ms": 0.0011999945854768157,
+        "p95_ms": 0.0017999991541728377,
+        "p99_ms": 0.0024010035849642
+      },
+      "server_switch_commit": {
+        "n": 200,
+        "p50_ms": 0.005399997462518513,
+        "p95_ms": 0.006910008232807737,
+        "p99_ms": 0.011613000970100972
+      },
+      "acceptance_period_abs_error_including_switches": {
+        "n": 1599,
+        "p50_ms": 0.9996999963186679,
+        "p95_ms": 6.563119992788415,
+        "p99_ms": 7.043990000383928
+      },
+      "client_counters": {
+        "stale_responses": 0,
+        "stale_errors": 0,
+        "late_chunks": 0,
+        "holds": 200,
+        "accepted": 1600,
+        "bootstrap_requests": 200,
+        "queue_underruns": 0,
+        "safety_hold_seconds": 0.6971428999531781
+      },
+      "rpc_exceptions": 0,
+      "control_rpc_exceptions": 0,
+      "control_response_errors": 0,
+      "response_errors": 0,
+      "server_rejected": 0,
+      "load_counts": {
+        "base": 2,
+        "adapters": 2
+      },
+      "warmup_counts": {
+        "A": 1,
+        "B": 1
+      },
+      "memory": {
+        "unique_parameter_storage_bytes": 32768,
+        "adapter_bytes": 0,
+        "allocated": null,
+        "reserved": null,
+        "peak_allocated": null,
+        "device_total_used_bytes": null,
+        "process_used_bytes": null
+      },
+      "merged_output_equivalence": {
+        "status": "not_applicable_simulated_policy"
+      }
+    }
+  }
+}

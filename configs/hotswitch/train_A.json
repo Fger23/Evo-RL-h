@@ -1,0 +1,33 @@
+{
+  "dataset": {
+    "repo_id": null,
+    "root": null
+  },
+  "policy": {
+    "type": "pi05",
+    "pretrained_path": null,
+    "device": null,
+    "push_to_hub": false,
+    "compile_model": false,
+    "rtc_training_max_delay": null
+  },
+  "peft": {
+    "method_type": "LORA",
+    "r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.0,
+    "target_modules": "(model\\.paligemma_with_expert\\.(paligemma\\.language_model|gemma_expert)\\..*\\.self_attn\\.(q|v)_proj|model\\.(action_in_proj|action_out_proj|time_mlp_in|time_mlp_out))",
+    "full_training_modules": []
+  },
+  "acp": {
+    "enable": true,
+    "indicator_field": "complementary_info.acp_indicator",
+    "indicator_dropout_prob": 0.3
+  },
+  "steps": null,
+  "batch_size": null,
+  "output_dir": null,
+  "wandb": {
+    "enable": false
+  }
+}

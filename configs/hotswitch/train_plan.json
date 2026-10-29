@@ -1,0 +1,15 @@
+{
+  "common_base": null,
+  "mechanism_validation_report": null,
+  "required_free_gpu_bytes": null,
+  "tasks": {
+    "A": {
+      "config_path": "train_A.json",
+      "training_time_rtc": true
+    },
+    "B": {
+      "config_path": "train_B.json",
+      "training_time_rtc": true
+    }
+  }
+}
