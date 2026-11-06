@@ -45,7 +45,7 @@ python -B -u -m lerobot.scripts.hotswitch_server \
 ```bash
 mkdir -p "$HOME/code"
 git clone --branch hot-switch/unified-r1 \
-  ssh://baiyuntian@10.61.5.1:2222/home/baiyuntian/baiyuntian/Evo-RL-hot-switch \
+  https://github.com/Fger23/Evo-RL-h.git \
   "$HOME/code/Evo-RL-hot-switch"
 ```
 

@@ -463,5 +463,32 @@
     "address_cli_forms_manually_validated": 2,
     "physical_robot_tested": false,
     "gpu_smoke_scope": "Default server on10.61.5.1:8100 loaded formal model and returned50x12 finite actions before client-only argparse alias; server/backend unchanged."
+  },
+  "github_publication": {
+    "repository": "https://github.com/Fger23/Evo-RL-h",
+    "scope": "code-only",
+    "canonical_server_commit": "de8174673cd66d94e35310167ce9d21f1754954e",
+    "runtime_source_unchanged": true,
+    "omitted_paths": [
+      "website/README.md",
+      "website/app.js",
+      "website/assets/images/VLA_architecture.jpg",
+      "website/assets/images/evomind1.png",
+      "website/assets/images/evomind_wechat.jpg",
+      "website/assets/images/lerobot-logo-thumbnail.png",
+      "website/assets/images/overview.png",
+      "website/assets/images/rlgroup.jpg",
+      "website/assets/images/robots_control_video.webp",
+      "website/assets/images/sjtu.png",
+      "website/assets/images/so100_video.webp",
+      "website/assets/images/so101provider.jpg",
+      "website/assets/videos/.gitkeep",
+      "website/assets/videos/README.md",
+      "website/index.html",
+      "website/styles.css"
+    ],
+    "test_source_retained": true,
+    "historical_commits_preserved": true,
+    "historical_lfs_objects_may_remain_in_repository_storage": true
   }
 }
