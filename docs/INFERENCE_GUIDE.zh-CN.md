@@ -66,33 +66,18 @@ git pull --ff-only origin main
 
 ## 3. 客户端：按实际终端选择命令
 
-### 3A. Windows PowerShell
+### 3A. 从 Windows PowerShell 进入同一目录的 WSL
 
-在已能执行 `conda activate evo-rl` 的客户端 PowerShell 中复制下面命令。PowerShell 使用行尾反引号续行，不能把 Bash 的 `source`、`export` 或行尾反斜杠直接粘贴到这里。
+当前客户端使用 Linux 设备路径，并通过设备文件存在性检查串口。原生 Windows 的 COM 口不能直接套用这项检查，因此仅将配置改成 COM 名称还不够。沿用当前代码与设备配置时，应在能访问机器人和相机 USB 设备的 Linux / WSL 环境运行；本次只修改仓库目录和文档，未新增 Windows 串口驱动适配。
 
-当前 JSON 保存的是 `/dev/ttyACM*` 和 `/dev/v4l/by-path/*` 设备路径。原生 Windows 运行前，需在 `D:\byt\Evo-RL-h\configs\hotswitch\client_so101.json` 中将串口改为本机实际 COM 口、将 OpenCV 相机路径改为本机实际设备号，并使用该环境已有的校准文件。具体设备号以客户端为准，指南不预设左右 COM 映射。
+如果客户端已安装 WSL，在 PowerShell 中执行：
 
 ```powershell
 Set-Location -LiteralPath 'D:\byt\Evo-RL-h'
-conda activate evo-rl
-
-$env:PYTHONPATH = 'D:\byt\Evo-RL-h\src'
-$env:PYTHONDONTWRITEBYTECODE = '1'
-$env:PYTHONNOUSERSITE = '1'
-$env:CUDA_VISIBLE_DEVICES = ''
-$env:LEROBOT_ASYNC_LOG_TO_FILE = '0'
-$env:HF_HUB_OFFLINE = '1'
-$env:WANDB_MODE = 'disabled'
-$env:TOKENIZERS_PARALLELISM = 'false'
-$env:OMP_NUM_THREADS = '8'
-$env:MKL_NUM_THREADS = '8'
-
-python -B -u -m lerobot.scripts.hotswitch_so101_client `
-  --config='D:\byt\Evo-RL-h\configs\hotswitch\client_so101.json' `
-  --remote_policy.server_address=10.61.5.1:8100 `
-  --task-id=A `
-  --steps=0
+wsl.exe --cd /mnt/d/byt/Evo-RL-h
 ```
+
+进入 WSL 后，继续执行3B中的 Bash 命令。`D:\byt\Evo-RL-h` 与 `/mnt/d/byt/Evo-RL-h` 指向同一份代码，无需再克隆另一份仓库。WSL 内还需已有原 `evo-rl` 环境及可见的机器人、相机设备。
 
 ### 3B. WSL / Bash
 
@@ -175,15 +160,6 @@ python -B -m lerobot.scripts.hotswitch_server \
   --check
 ```
 
-客户端 PowerShell 检查（先完成3A中的环境激活和源码绑定）：
-
-```powershell
-python -B -m lerobot.scripts.hotswitch_so101_client `
-  --config='D:\byt\Evo-RL-h\configs\hotswitch\client_so101.json' `
-  --remote_policy.server_address=10.61.5.1:8100 `
-  --check
-```
-
 客户端 WSL 检查（先完成3B中的环境激活和源码绑定）：
 
 ```bash
@@ -193,7 +169,7 @@ python -B -m lerobot.scripts.hotswitch_so101_client \
   --check
 ```
 
-以上客户端检查会核对配置、已有校准和串口路径，不连接机器人。
+以上客户端检查在 WSL / Linux 中核对配置、已有校准和串口路径，不连接机器人。
 
 如果监听失败，在服务器检查端口：
 
