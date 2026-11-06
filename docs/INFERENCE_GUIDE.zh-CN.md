@@ -1,119 +1,91 @@
-# Evo-RL Hot Switch 推理操作指南
+# Evo-RL 服务端 / 双 SO101 客户端
 
-以下命令在服务器的 Bash 中执行。根目录统一为 `/home/baiyuntian/baiyuntian/Evo-RL-hot-switch`。开两个 SSH 终端，一个运行服务，一个发送推理请求。
+日常只需要各一条命令。在各自机器的仓库根目录执行；tmux 由你自行创建和管理。启动不再创建时间戳运行目录，不需要 RUN_DIR、--session 或 ready 文件。
 
-## 1. 激活环境并绑定本仓库
-
-```bash
-ssh -p 2222 baiyuntian@10.61.5.1
-cd /home/baiyuntian/baiyuntian/Evo-RL-hot-switch
-source scripts/activate.sh
-python -B - <<'PY'
-import sys, lerobot
-print(sys.executable)
-print(lerobot.__file__)
-PY
-```
-
-源码应显示 `/home/baiyuntian/baiyuntian/Evo-RL-hot-switch/src/lerobot/__init__.py`。解释器复用 `/home/baiyuntian/baiyuntian/Evo-RL-hot-switch/20261104_gpu1/runtime-clean/bin/python`。每个新终端都执行激活。节点路径配置在 `configs/hotswitch/node3.env`，IDE 的 SSH 解释器选择同一绝对路径，PYTHONPATH 指向当前仓库 `src/`；当前 venv 不需要重新 pip 安装。
-
-CPU 客户端和 guardian 的 `CUDA_VISIBLE_DEVICES` 为空，模型子进程才使用选定 GPU。当前只授权物理 GPU1，UUID `GPU-4e74582b-8cca-a9c3-8d95-73f7babc3c2a`，模型内编号为 `cuda:0`。
-
-## 2. 服务端选择 GPU 并启动
-
-每次服务使用新的 SESSION；不要预先创建这个 SESSION 目录。
+## 服务端
 
 ```bash
-mkdir -p "$EVORL_INFER_ROOT"
-SESSION="$EVORL_INFER_ROOT/service_$(date -u +%Y%m%dT%H%M%SZ)_$$"
-echo "$SESSION"
-bash scripts/hotswitch/server_start.sh --gpu 1 --port 8099 --backend shared --session "$SESSION" --check
+bash scripts/server.sh --gpu 1
 ```
 
-`--check` 仅检查路径、源码和 GPU UUID，不加载模型。实际前台运行：
+它自动选择本机已有 Python 环境、绑定当前仓库源码，在前台加载正式 A160000 和共享 Base，预热后监听 8099。看到 ready JSON 后即可连接客户端。日志直接写终端；Ctrl+C 正常停止。授权 GPU1 的 UUID、模型注册表、监听地址和精度集中在 `configs/hotswitch/server.json`。
+
+参数可直接覆盖，例如：
 
 ```bash
-bash scripts/hotswitch/server_start.sh --gpu 1 --port 8099 --backend shared --session "$SESSION"
+bash scripts/server.sh --gpu 1 --host 0.0.0.0 --port 8099
 ```
 
-后台常驻运行使用下面这一条，前台和后台任选一种，不要重复启动：
+配置默认绑定当前节点的私网地址10.61.5.1（已在服务器网卡上核对），供另一台客户端连接；原 RPC 为明文、无网络认证的接口，只在可信内网使用。物理 GPU1 在进程内显示为 cuda:0。节点仍校验授权 UUID、持有原共享 GPU 锁；卡上已有计算进程会退出，不会停止其他进程。
+
+只检查配置和 GPU UUID、不加载模型：
 
 ```bash
-nohup bash scripts/hotswitch/server_start.sh \
-  --gpu 1 --port 8099 --backend shared --session "$SESSION" \
-  > "${SESSION}.launcher.log" 2>&1 < /dev/null &
+bash scripts/server.sh --check
 ```
 
-保存输出的 SESSION 完整路径，供第二个终端和停止命令使用。脚本持有现有共享 GPU 协调锁，并在选定卡已有计算进程时退出；不会停止其他进程。`--port 0` 可选择空闲端口，以 ready 文件的实际端口为准。`dual-unmerged` 是两个独立 Base 的对照模式，日常使用 `shared`。
+普通已激活环境也可以直接用 `python server.py --gpu 1`。没有安装新环境或升级现有依赖。
 
-注册表：`$EVORL_REGISTRY`，即正式 RUN 的 `postrun_r1/bundles/registry.json`。注册任务 A / A_copy；A_copy 权重与 A 相同。Base 仍从原 NFS 位置加载，Adapter 使用已完成的 A160000。
+## 客户端：两台 SO101 实际控制
 
-## 3. 客户端等待就绪与查询
-
-第二个终端登录并激活，再把 SESSION 设置为第一个终端输出的真实路径：
+`configs/hotswitch/client_so101.json` 已接入你指定分支 RTC_run.txt 的实际设备配置；在客户端核对这些设备身份仍对应原先左右臂和相机，并补齐下文说明的训练单位。以后固定这一条：
 
 ```bash
-cd /home/baiyuntian/baiyuntian/Evo-RL-hot-switch
-source scripts/activate.sh
-SESSION=/nfs/baiyuntian/assets/model/evorl_manual_inference/替换为实际服务目录
-ADDRESS=$(python -B scripts/hotswitch/wait_ready.py --session "$SESSION" --timeout 900)
-python -B -m lerobot.scripts.hotswitch_cli status --address "$ADDRESS" --timeout 30
+bash scripts/client.sh
 ```
 
-## 4. 启动只返回预测的推理客户端
-
-使用已有的真实离线观测，先查看默认 PLAN，再显式执行一次请求：
+也可在已激活的客户端环境中执行：
 
 ```bash
-OBS="$EVORL_FORMAL_RUN/evidence/offline_observation.safetensors"
-python -B examples/hotswitch/infer_client.py \
-  --address "$ADDRESS" --task-id A --observation "$OBS" --output "$SESSION/prediction_A.json"
-python -B examples/hotswitch/infer_client.py \
-  --address "$ADDRESS" --task-id A --observation "$OBS" --output "$SESSION/prediction_A.json" --execute
+python client.py
 ```
 
-默认 PLAN 不联网、不写结果；执行返回 50×12 的预测 chunk、原始/后处理动作、session/epoch/request 身份。客户端不加载 Base 或 Adapter，也不发送机器人控制指令。它是一次 bootstrap 推理示例，不是连续 RTC 控制循环。
+默认模式就是双 SO101 真机控制，不是模拟器或仅打印预测。持续运行到 Ctrl+C；需要有限步数可加 `--steps 300`。模型权重只在服务端加载，客户端无需模型注册表或 NFS 权重目录。
 
-服务会保留会话。再次运行新客户端时，用新输出文件并显式传 `--previous-session-id 上次结果中的session_id`，仅接管已结束的自己会话；否则重启自己的服务。不要自动接管其他客户端。
+## 一次性配置项来自原代码
 
-Python 调用接口保留在示例代码中：
+直接复用原 `BiSOFollower/SOFollower`，不是重新实现机器人驱动。原 README 给出的机器人 ID 和校准文件约定已经放入配置：
 
-```python
-from infer_client import infer_once
-result = infer_once(address, "A", observation)
-print(result["processed_actions"])
-```
+- `robot.id`: `bimanual_follower`，来自原 RTC_run.txt。
+- `calibration_dir=null` 时直接沿用原代码 HF_LEROBOT_CALIBRATION/robots/so_follower（通常为 `~/.cache/huggingface/lerobot/calibration/robots/so_follower`，兼容你原来的 HF_HOME），需要已有 `<id>_left.json` 和 `<id>_right.json`。
+- 左右串口沿用原 RTC_run.txt 的 `/dev/ttyACM0` / `/dev/ttyACM1`；重启后仍需核对左右身份，建议使用稳定的 by-id 路径。
+- 三路相机：左臂 `fixed`、左臂 `wrist`、右臂 `wrist`，对应模型 `left_fixed/left_wrist/right_wrist`，RGB640×480、30fps。
+- 左臂6维在前，右臂6维在后，动作名称与当前12维模型相同。
 
-激活脚本已把 `examples/hotswitch` 放入 PYTHONPATH。`observation` 包含三个 RGB 相机 tensor 和 12 维原始状态；图像键为 `observation.images.left_fixed`、`left_wrist`、`right_wrist`（每个完整键均以 `observation.images.` 开头），形状 `[3,480,640]`、float32 `[0,1]`，状态键 `observation.state`、形状 `[12]`。uint8 HWC 图像转 CHW 后除以 255。状态顺序和单位按真实数据集，不能自行猜测；不要重复加入 ACP 标签或归一化。
+直接基线 Evo-RL README 只有占位符，但你指定的 test-evorl/training-RTC 分支 RTC_run.txt 保存了实际配置，现已原样接入：左固定 RealSense 序列号260322276426，左腕 USB路径 pci-0000:c6:00.3-usb-0:2:1.0-video-index0，右腕 USB路径 pci-0000:c6:00.3-usb-0:1:1.0-video-index0。不会自动扫描或交换设备。
 
-## 5. 连续离线推理 / SimRobot
+`address` 默认当前服务器私网地址 `10.61.5.1:8099`（没有沿用原脚本的旧服务器10.61.5.3、旧端口8090或GPU7）；客户端需能路由到该网卡。你也可以自行建立 SSH 隧道并把地址设为 `127.0.0.1:18099`。
 
-在新的服务会话上运行：
+原 RTC_run.txt 没有覆盖 `use_degrees`，原驱动默认 `use_degrees=false`（身体关节 −100～100、夹爪0～100），但训练数据没有保存实际采集开关，因此 `training_units` 暂留 null。按当时采集设置填 `normalized` 或 `degrees`，并保持两臂 `use_degrees` 一致。角度模式要显式填每个动作的限位。这个声明只保存在客户端配置，原模型 manifest 的 unverified 标记不会被篡改。
+
+`max_delta_per_step` 默认2个相应控制单位，拒绝突然跳变；可在 `limits` 为各个关节设置更窄的 min/max/max_delta_per_step。它不是碰撞检测或真机安全认证，需按你的原台架配置调整。
+
+## 客户端环境与启动前检查
+
+复用客户端原有采集环境即可。脚本优先使用 EVORL_PYTHON、已激活的 venv/conda 或仓库 .venv；不会去激活另一台服务器的绝对路径。需指定本机解释器时仍可一条命令：
 
 ```bash
-python -B -m lerobot.scripts.hotswitch_cli offline-client \
-  --registry "$EVORL_REGISTRY" --address "$ADDRESS" --task-id A \
-  --steps 600 --control-hz 30 --switch-every 150 --timeout 60 \
-  --output "$SESSION/offline_client.json"
+EVORL_PYTHON=/你的客户端环境/bin/python bash scripts/client.sh
 ```
 
-该模式使用真实 RPC 和已保存观测，动作接受端是 SimRobot；A/A_copy 交替用于机制检查。`--switch-every 0` 固定 A。名义 30Hz 会受 refill hold 影响，不能据此声称稳定真机 30Hz 或任务成功率。
-
-## 6. 日志、停止和远程端口
+检查本地配置，不导入机器人 SDK、不联网、不连接硬件：
 
 ```bash
-tail -f "$SESSION/server.stdout.log" "$SESSION/server.stderr.log"
-bash scripts/hotswitch/server_stop.sh "$SESSION"
+bash scripts/client.sh --check
 ```
 
-停止通过私有 token 的回环控制口，让 guardian 使用持有的 birth pidfd 清理自己的子进程并确认退出；不要使用按进程名批量 kill。
+真实启动先核对服务端模型指纹、任务、动作顺序、三路相机和频率，再创建驱动。缺失配置会在连接前报出具体项。不会启动自动校准、motor setup 或重写 PID；要求原校准与电机内配置一致，已为位置模式。连接时先写入当前位置目标再使能力矩，避免沿用旧目标。
 
-服务只监听回环。如需另一台机器访问，在该机器建立 SSH 隧道：
+## 停止、重连与推理控制
+
+客户端 Ctrl+C：停止发新动作、尝试保持当前位置并关闭通信；保持力矩不会被自动关闭。服务端 Ctrl+C：停止 RPC，退出进程并释放 GPU 锁。
+
+服务端已有客户端会话时，不会自动抢占。结束你自己的上一客户端后，可显式重连：
 
 ```bash
-ssh -p 2222 -N -L 18099:127.0.0.1:8099 baiyuntian@10.61.5.1
+bash scripts/client.sh --previous-session-id 上次启动输出的session_id
 ```
 
-客户端地址改为 `127.0.0.1:18099`；若服务选了端口 0，用 ready 文件的实际端口替换 8099。另一台客户端仍需兼容的协议代码和 torch/safetensors/grpc 环境，服务器的环境路径不能在不同机器直接激活。
+客户端使用原 HotSwitchClientCore：确认实际送出的命令后才推进计数，RTC refill 保留原始/执行前缀校验。当前 refill 是同步推理并保持，不宣称无停顿30Hz。服务端 task A_copy 只是同权重机制副本，客户端默认只控制任务 A。
 
-当前入口仅进行推理/模拟。真机录制还需要经过验证的 safe_hold、动作限制和单位等回调；此指南没有连接或动作机器人。
+本次代码测试使用 CPU 假机器人和真实 RPC，不等于真机验收；服务器验证模型加载时也不会执行机器人客户端。

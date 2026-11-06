@@ -1,0 +1,52 @@
+{
+  "address": "10.61.5.1:8099",
+  "task_id": "A",
+  "bundle_manifest_sha256": "e985a93df8f917f7abab4d892d99cee0b4b621d61199d741ea79e1024d64bcde",
+  "training_units": null,
+  "control_hz": 30,
+  "timeout_s": 10,
+  "steps": 0,
+  "max_delta_per_step": 2.0,
+  "limits": {},
+  "robot": {
+    "type": "bi_so_follower",
+    "id": "bimanual_follower",
+    "calibration_dir": null,
+    "left_arm_config": {
+      "port": "/dev/ttyACM0",
+      "use_degrees": false,
+      "cameras": {
+        "fixed": {
+          "type": "intelrealsense",
+          "serial_number_or_name": "260322276426",
+          "width": 640,
+          "height": 480,
+          "fps": 30
+        },
+        "wrist": {
+          "type": "opencv",
+          "index_or_path": "/dev/v4l/by-path/pci-0000:c6:00.3-usb-0:2:1.0-video-index0",
+          "width": 640,
+          "height": 480,
+          "fps": 30,
+          "fourcc": "MJPG"
+        }
+      }
+    },
+    "right_arm_config": {
+      "port": "/dev/ttyACM1",
+      "use_degrees": false,
+      "cameras": {
+        "wrist": {
+          "type": "opencv",
+          "index_or_path": "/dev/v4l/by-path/pci-0000:c6:00.3-usb-0:1:1.0-video-index0",
+          "width": 640,
+          "height": 480,
+          "fps": 30,
+          "fourcc": "MJPG"
+        }
+      }
+    }
+  },
+  "configuration_source": "Fger23/test-evorl@98e434d4afbf39dc79060c89e8fdf3d1c3c7fbe7:RTC_run.txt; device identities must still match this client"
+}

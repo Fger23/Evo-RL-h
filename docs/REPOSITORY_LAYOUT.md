@@ -22,9 +22,13 @@
 3. 单独审查并 CPU 验证的录制归属补丁：`recording_loop.py`、`recording_remote_policy.py`、`utils/recording_attribution.py`。
 4. 新操作指南中的启动和推理工具，改为相对仓库根定位；guardian 字节保持原已验收版本。
 
-所有运行时 `src/` 文件仅统一 CRLF/LF 换行；按 LF 规范化后与最新 627 文件冻结快照逐字节相同，运行逻辑没有再改动。18 个基线缺失的数据集源码文件来自同一 Fger23/Evo-RL 历史提交 `4425ccd`，已在原训练源码中恢复。归档输入和源文件 SHA 见 `source_provenance.json`。
+190b2a2 整合版本的运行时 `src/` 仅统一 CRLF/LF 换行。后续单命令版本新增 hotswitch_server / hotswitch_so101_client，给原 CLI 增加监听地址和正常退出，并给异步日志增加终端输出开关；训练实现和 HotSwitchClientCore 未修改。原 626/627 冻结树仍原位保留。18 个基线缺失的数据集源码文件来自同一 Fger23/Evo-RL 历史提交 `4425ccd`，已在原训练源码中恢复。归档输入和源文件 SHA 见 `source_provenance.json`。
 
 上游基线把 16 个完整 Markdown 文档误标为 Git 符号链接，Linux checkout 会失败。本仓库保留正文并把这些条目修正为普通文件。
+
+## 单命令入口
+
+服务端 `bash scripts/server.sh --gpu 1`；双 SO101 客户端 `bash scripts/client.sh`。设备配置来自用户指定 test-evorl/training-RTC 的 RTC_run.txt，见 docs/RTC_PROVENANCE.md。两个脚本不依赖 tmux、RUN_DIR 或每次启动目录；客户端不依赖服务端绝对环境路径或模型权重。旧的 scripts/hotswitch/server_start.sh 仅保留为按次留证入口。
 
 ## 环境与运行数据
 
@@ -38,4 +42,4 @@
 
 ## 验证范围
 
-本次目录整合检查 Git 基线继承、全部运行时源 SHA、环境绑定、CLI 帮助、Bash/嵌入 Python 语法、CPU 热切换与录制回归、真实回环 gRPC 客户端和 pidfd 清理。没有重跑正式训练、没有启动真实 GPU 模型或连接机器人。新仓库不声称经过新的 GPU 性能验收。
+190b2a2 目录整合只做了 CPU 验证。后续单命令版本的 232 项 CPU 回归全部通过（179 core、38 tools、8 guardian、7 inference），其中新增 19 项覆盖双臂假硬件、真实回环 RPC、模型指纹拒绝和连接失败清理。新服务端命令已在授权 GPU1 真实加载 A160000，并用已有离线观测获得有限的 50×12 预测；随后正常退出，没有创建新的运行目录。没有重训、连接机器人或重跑 GPU 性能基准，不能把这次启动验证写成真机验收。

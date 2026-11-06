@@ -9,18 +9,18 @@
 ```bash
 ssh -p 2222 baiyuntian@10.61.5.1
 cd /home/baiyuntian/baiyuntian/Evo-RL-hot-switch
-source scripts/activate.sh
+bash scripts/server.sh --gpu 1
 ```
 
-源码统一绑定本仓库的 `src/`。现有 Python 环境复用，模型、数据、日志和 checkpoint 保留在 NFS。节点配置：`configs/hotswitch/node3.env`。
+服务端前台加载；客户端在另一台机器执行 `bash scripts/client.sh`，默认双 SO101 真机控制。`configs/hotswitch/client_so101.json` 已填入原 RTC_run.txt 的双臂和相机参数，首次使用前需核对设备身份并补齐训练单位；无需 tmux、RUN_DIR 或每次运行新目录。源码统一绑定本仓库的 `src/`。现有 Python 环境复用，模型、数据、日志和 checkpoint 保留在 NFS。单命令服务配置：`configs/hotswitch/server.json`。
 
-- **操作指南**：`docs/INFERENCE_GUIDE.zh-CN.md`（选 GPU、前台/后台服务、客户端推理和停止）。
+- **操作指南**：`docs/INFERENCE_GUIDE.zh-CN.md`（选 GPU、服务启动、客户端控制和停止）。
 - **目录与改动说明**：`docs/REPOSITORY_LAYOUT.md`。
 - **热切换设计**：`docs/HOT_SWITCH.md`。
-- **客户端代码**：`examples/hotswitch/infer_client.py`。
+- **客户端代码**：根目录 `client.py`；离线预测示例保留在 `examples/hotswitch/infer_client.py`。
 - **CPU 回归**：`bash scripts/test_hotswitch.sh /nfs/baiyuntian/assets/model/NEW_TEST_DIRECTORY`。
 
-当前节点只授权 GPU1。客户端默认 CPU；启动脚本只给自己的模型子进程设置 GPU UUID。没有自动启动服务或机器人。
+当前节点只授权 GPU1。模型进程使用指定 GPU；客户端使用 CPU，默认模式是双 SO101 真机控制。单命令服务加载和返回预测已在 GPU1 验证，客户端尚未做实机验收。
 
 已完成的正式 GPU 验收对应冻结的训练源码；本仓库合入了随后单独通过 CPU 验证的录制归属补丁。重整后的 CPU 回归单独留证，不将历史 GPU 结果冒充对新目录的重新测试。A_copy 是 A 的同权重机制副本；未测真机任务成功率。
 

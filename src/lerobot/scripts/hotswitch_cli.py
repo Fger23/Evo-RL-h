@@ -397,20 +397,22 @@ def serve(args):
         raise ValueError("port must be 0 (automatic) or 1..65535")
     if args.ready_file and Path(args.ready_file).exists():
         raise FileExistsError(f"Refusing to overwrite ready evidence: {args.ready_file}")
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=4), options=[
+    executor = futures.ThreadPoolExecutor(max_workers=4)
+    server = grpc.server(executor, options=[
         ("grpc.so_reuseport", 0),
         ("grpc.max_receive_message_length", 64*1024*1024), ("grpc.max_send_message_length", 64*1024*1024)])
-    bound_port = server.add_insecure_port(f"127.0.0.1:{args.port}")
+    host = getattr(args, "host", "127.0.0.1")
+    bound_port = server.add_insecure_port(f"{host}:{args.port}")
     if not bound_port:
-        raise RuntimeError("Could not bind loopback server")
+        raise RuntimeError("Could not bind server address")
     backend_class = {"shared": SharedAdapterBackend, "dual": DualModelBackend, "dual-unmerged": DualUnmergedBackend}[args.backend]
     backend = backend_class.from_registry(args.registry, device=args.device, dtype=getattr(args, "dtype", None))
     runtime = HotSwitchRuntime(backend)
     status = runtime.preload()
-    servicer = PolicyServer(PolicyServerConfig(host="127.0.0.1", port=bound_port), hotswitch_runtime=runtime)
+    servicer = PolicyServer(PolicyServerConfig(host=host, port=bound_port), hotswitch_runtime=runtime)
     services_pb2_grpc.add_AsyncInferenceServicer_to_server(servicer, server)
     server.start()
-    ready = {"ready": status, "address": f"127.0.0.1:{bound_port}",
+    ready = {"ready": status, "address": f"{host}:{bound_port}",
              "backend_mode": getattr(backend, "comparison_mode", args.backend),
              "parameter_dtypes": getattr(backend, "parameter_dtypes", None),
              "compute_precision": getattr(backend, "compute_precision", None),
@@ -418,7 +420,13 @@ def serve(args):
     if args.ready_file:
         save_json(args.ready_file, ready)
     print(json.dumps(ready, indent=2), flush=True)
-    server.wait_for_termination()
+    try:
+        server.wait_for_termination()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        server.stop(1).wait()
+        executor.shutdown(wait=True, cancel_futures=True)
 
 
 def offline_client(args):
@@ -519,6 +527,7 @@ def main():
     server.add_argument("--device", default="cuda")
     server.add_argument("--dtype", choices=("bfloat16", "float32"), help="Runtime-only override before Base construction")
     server.add_argument("--port", type=int, default=8099)
+    server.add_argument("--host", default="127.0.0.1")
     server.add_argument("--ready-file", help="Write resolved loopback address only after successful preload and startup")
     client = sub.add_parser("offline-client", help="Saved observations + real RPC + simulated robot only")
     client.add_argument("--registry", required=True)

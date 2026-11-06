@@ -1,0 +1,10 @@
+{
+  "registry": "/nfs/baiyuntian/assets/model/straighten_cash_joint_adapter_formal_20261104_r4_node3_gpu1/postrun_r1/bundles/registry.json",
+  "gpu": "1",
+  "allowed_gpu_uuid": "GPU-4e74582b-8cca-a9c3-8d95-73f7babc3c2a",
+  "lock_root": "/nfs/lerobot/s101/hot_switch/20261103/locks",
+  "host": "10.61.5.1",
+  "port": 8099,
+  "backend": "shared",
+  "dtype": "bfloat16"
+}

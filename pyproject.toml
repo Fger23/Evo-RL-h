@@ -203,6 +203,8 @@ all = [
 ]
 
 [project.scripts]
+evorl-server="lerobot.scripts.hotswitch_server:main"
+evorl-client="lerobot.scripts.hotswitch_so101_client:main"
 lerobot-hotswitch="lerobot.scripts.hotswitch_cli:main"
 lerobot-hotswitch-rpc-benchmark="lerobot.scripts.hotswitch_rpc_benchmark:main"
 lerobot-calibrate="lerobot.scripts.lerobot_calibrate:main"
