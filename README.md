@@ -12,7 +12,7 @@ cd /home/baiyuntian/baiyuntian/Evo-RL-hot-switch
 bash scripts/server.sh --gpu 1
 ```
 
-服务端前台加载；客户端在另一台机器执行 `bash scripts/client.sh`，默认双 SO101 真机控制。`configs/hotswitch/client_so101.json` 已填入原 RTC_run.txt 的双臂和相机参数，首次使用前需核对设备身份并补齐训练单位；无需 tmux、RUN_DIR 或每次运行新目录。源码统一绑定本仓库的 `src/`。现有 Python 环境复用，模型、数据、日志和 checkpoint 保留在 NFS。单命令服务配置：`configs/hotswitch/server.json`。
+服务端前台加载；客户端在另一台机器执行 `bash scripts/client.sh`，默认双 SO101 真机控制。`configs/hotswitch/client_so101.json` 已填入原 RTC_run.txt 的双臂和相机参数，训练单位已按你确认的原默认设置填为 normalized，首次使用前需核对设备身份；无需 tmux、RUN_DIR 或每次运行新目录。源码统一绑定本仓库的 `src/`。现有 Python 环境复用，模型、数据、日志和 checkpoint 保留在 NFS。单命令服务配置：`configs/hotswitch/server.json`。
 
 - **操作指南**：`docs/INFERENCE_GUIDE.zh-CN.md`（选 GPU、服务启动、客户端控制和停止）。
 - **目录与改动说明**：`docs/REPOSITORY_LAYOUT.md`。

@@ -441,6 +441,16 @@
     "actual_gpu_startup_rpc_smoke": true,
     "gpu_performance_benchmark_rerun": false,
     "physical_robot_tested": false,
-    "client_training_units": "UNCONFIRMED; hardware startup rejected until configured"
+    "client_training_units": "normalized; operator confirmed no use_degrees=true override during collection",
+    "units_update_cpu_tests_passed": 19
+  },
+  "client_training_units_confirmation": {
+    "source": "user_chat",
+    "date": "2026-11-06",
+    "user_reply": "没有加过",
+    "meaning": "User confirmed no use_degrees=true override during collection; follow the original driver default false.",
+    "training_units": "normalized",
+    "physical_robot_tested": false,
+    "bundle_manifest_sha256": "e985a93df8f917f7abab4d892d99cee0b4b621d61199d741ea79e1024d64bcde"
   }
 }

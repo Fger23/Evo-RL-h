@@ -10,4 +10,4 @@
 - https://github.com/Fger23/Evo-RL/commit/e9d277ae0650fb3fb7e991fcfa87399b20ce1a66
 - https://github.com/Fger23/test-evorl/blob/98e434d4afbf39dc79060c89e8fdf3d1c3c7fbe7/src/lerobot/policies/pi05/modeling_pi05.py
 
-单命令客户端的具体双臂ID、串口和相机来自该固定提交的 RTC_run.txt；当前服务器已改为node3私网10.61.5.1、GPU1和正式A160000，未沿用旧GPU7或旧模型。该脚本未记录straighten_cash采集时的实际use_degrees，所以训练单位不会仅凭驱动默认值冒充已确认。
+单命令客户端的具体双臂ID、串口和相机来自该固定提交的 RTC_run.txt；当前服务器已改为node3私网10.61.5.1、GPU1和正式A160000，未沿用旧GPU7或旧模型。该脚本没有覆盖use_degrees。2026-11-06用户确认采集时没有添加use_degrees=true，客户端据此采用原驱动默认false和normalized行程刻度；确认来源记录于客户端配置，不改写原模型manifest的历史记录。

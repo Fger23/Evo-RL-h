@@ -28,7 +28,7 @@ bash scripts/server.sh --check
 
 ## 客户端：两台 SO101 实际控制
 
-`configs/hotswitch/client_so101.json` 已接入你指定分支 RTC_run.txt 的实际设备配置；在客户端核对这些设备身份仍对应原先左右臂和相机，并补齐下文说明的训练单位。以后固定这一条：
+`configs/hotswitch/client_so101.json` 已接入你指定分支 RTC_run.txt 的实际设备配置；在客户端核对这些设备身份仍对应原先左右臂和相机；训练单位已按你确认的原默认设置填好。以后固定这一条：
 
 ```bash
 bash scripts/client.sh
@@ -56,7 +56,7 @@ python client.py
 
 `address` 默认当前服务器私网地址 `10.61.5.1:8099`（没有沿用原脚本的旧服务器10.61.5.3、旧端口8090或GPU7）；客户端需能路由到该网卡。你也可以自行建立 SSH 隧道并把地址设为 `127.0.0.1:18099`。
 
-原 RTC_run.txt 没有覆盖 `use_degrees`，原驱动默认 `use_degrees=false`（身体关节 −100～100、夹爪0～100），但训练数据没有保存实际采集开关，因此 `training_units` 暂留 null。按当时采集设置填 `normalized` 或 `degrees`，并保持两臂 `use_degrees` 一致。角度模式要显式填每个动作的限位。这个声明只保存在客户端配置，原模型 manifest 的 unverified 标记不会被篡改。
+2026-11-06 你确认采集时没有添加 `use_degrees=true`，因此沿用原驱动默认 `use_degrees=false`：身体关节使用校准行程刻度 −100～100，夹爪使用0～100。客户端已预置 `training_units="normalized"`，两臂均保持 `use_degrees=false`，无需再填写单位。用户确认来源保存在客户端配置的 `training_units_confirmation` 中；原模型 manifest 的历史 unverified 标记和模型文件保持原样。
 
 `max_delta_per_step` 默认2个相应控制单位，拒绝突然跳变；可在 `limits` 为各个关节设置更窄的 min/max/max_delta_per_step。它不是碰撞检测或真机安全认证，需按你的原台架配置调整。
 
