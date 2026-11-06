@@ -24,6 +24,8 @@
 
 所有运行时 `src/` 文件仅统一 CRLF/LF 换行；按 LF 规范化后与最新 627 文件冻结快照逐字节相同，运行逻辑没有再改动。18 个基线缺失的数据集源码文件来自同一 Fger23/Evo-RL 历史提交 `4425ccd`，已在原训练源码中恢复。归档输入和源文件 SHA 见 `source_provenance.json`。
 
+上游基线把 16 个完整 Markdown 文档误标为 Git 符号链接，Linux checkout 会失败。本仓库保留正文并把这些条目修正为普通文件。
+
 ## 环境与运行数据
 
 环境没有重新安装或升级：`/home/baiyuntian/baiyuntian/Evo-RL-hot-switch/20261104_gpu1/runtime-clean/bin/python`。`source scripts/activate.sh` 使用 `PYTHONPATH` 绑定当前根目录 `src/`。单独激活旧环境或使用旧指南仍会绑定旧冻结源；不要混用两套入口。
