@@ -289,7 +289,7 @@ def run_client(config, *, transport=None, driver_factory=SO101Driver):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT / "configs/hotswitch/client_so101.json")
-    parser.add_argument("--address")
+    parser.add_argument("--address", "--remote_policy.server_address", dest="address", help="RPC server address HOST:PORT")
     parser.add_argument("--task-id")
     parser.add_argument("--previous-session-id")
     parser.add_argument("--steps", type=int, help="0 runs until Ctrl+C")

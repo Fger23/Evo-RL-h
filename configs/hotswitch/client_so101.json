@@ -1,5 +1,5 @@
 {
-  "address": "10.61.5.1:8099",
+  "address": "10.61.5.1:8100",
   "task_id": "A",
   "bundle_manifest_sha256": "e985a93df8f917f7abab4d892d99cee0b4b621d61199d741ea79e1024d64bcde",
   "training_units": "normalized",

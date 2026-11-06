@@ -16,10 +16,13 @@ ssh -p 2222 baiyuntian@10.61.5.1
 
 ```bash
 cd /home/baiyuntian/baiyuntian/Evo-RL-hot-switch
-bash scripts/server.sh --gpu 1
+bash scripts/server.sh \
+  --gpu=1 \
+  --host=10.61.5.1 \
+  --port=8100
 ```
 
-脚本自动使用服务器已有的 Python 环境，绑定当前仓库的 `src/`，加载正式 A160000 和共享 Base，预热后监听 `10.61.5.1:8099`。看到包含 `ready` 和 `address` 的 JSON 后，再启动客户端。
+脚本自动使用服务器已有的 Python 环境，绑定当前仓库的 `src/`，加载正式 A160000 和共享 Base，预热后监听 `10.61.5.1:8100`。看到包含 `ready` 和 `address` 的 JSON 后，再启动客户端。
 
 在服务器任意目录，也可以直接用这一条命令启动：
 
@@ -67,7 +70,10 @@ git pull --ff-only origin hot-switch/unified-r1
 source "$HOME/miniforge3/etc/profile.d/conda.sh"
 conda activate evo-rl
 cd "$HOME/code/Evo-RL-hot-switch"
-bash scripts/client.sh
+bash scripts/client.sh \
+  --remote_policy.server_address=10.61.5.1:8100 \
+  --task-id=A \
+  --steps=0
 ```
 
 已经激活 `evo-rl` 并进入仓库根目录后，日常启动只需要：
@@ -82,7 +88,7 @@ bash scripts/client.sh
 bash "$HOME/code/Evo-RL-hot-switch/scripts/client.sh"
 ```
 
-客户端脚本会使用本机已激活的环境，并把当前仓库的 `src/` 放在源码搜索路径首位。客户端默认连接 `10.61.5.1:8099`，使用任务 A，持续控制两台 SO101，直到按 Ctrl+C。默认模式就是实际机器人控制。
+客户端脚本会使用本机已激活的环境，并把当前仓库的 `src/` 放在源码搜索路径首位。客户端默认连接 `10.61.5.1:8100`，使用任务 A，持续控制两台 SO101，直到按 Ctrl+C。默认模式就是实际机器人控制。
 
 ## 4. 两端日常命令对照
 
@@ -102,14 +108,26 @@ tmux 由你自行创建和管理。程序以前台方式运行，日志输出到
 服务端显式指定现有地址和端口：
 
 ```bash
-bash scripts/server.sh --gpu 1 --host 10.61.5.1 --port 8099
+bash scripts/server.sh --gpu=1 --host=10.61.5.1 --port=8100
 ```
 
-客户端显式指定现有服务地址：
+客户端按 `--参数=值` 格式指定服务地址；`--remote_policy.server_address` 与原 `--address` 等价：
 
 ```bash
-bash scripts/client.sh --address 10.61.5.1:8099
+bash scripts/client.sh \
+  --remote_policy.server_address=10.61.5.1:8100 \
+  --task-id=A \
+  --steps=0
 ```
+
+服务端 `--port` 可以改成你选择的空闲端口，客户端地址中的端口必须与之相同。例如改为8123时，两边分别写 `--port=8123` 和 `--remote_policy.server_address=10.61.5.1:8123`。
+
+| 入口 | 可覆盖的参数 |
+| --- | --- |
+| 服务端 | `--gpu`、`--host`、`--port`、`--backend`、`--dtype`、`--registry`、`--config` |
+| 客户端 | `--remote_policy.server_address`（或 `--address`）、`--task-id`、`--steps`、`--config`、`--previous-session-id` |
+
+以上两条命令使用本仓库的服务端和双 SO101 推理控制入口。机器人、相机和校准配置读取 `configs/hotswitch/client_so101.json`。你示例中的 `teleop`、`dataset` 参数属于录制入口；这两条命令的参数范围如上表。
 
 只检查配置，不启动模型或连接机器人：
 
@@ -138,6 +156,8 @@ bash scripts/client.sh --check
 你已确认采集时没有添加 `use_degrees=true`，因此身体关节沿用校准行程刻度 −100～100，夹爪沿用0～100，单位配置已经填好。
 
 客户端沿用原校准目录 `HF_LEROBOT_CALIBRATION/robots/so_follower`，需要已有 `bimanual_follower_left.json` 和 `bimanual_follower_right.json`；自定义过 `HF_HOME` 时仍遵循该设置。串口与相机路径应对应原先的左右设备，程序不会自动交换设备、自动校准或执行 motor setup。
+
+若出现 `Failed to bind`，先检查监听端口：`ss -H -ltnpe 'sport = :8100'`。本机8099已被其他用户占用，因此本仓库两端默认使用8100。更新旧客户端源码后使用新的默认地址；暂时保留旧源码时，可用 `bash scripts/client.sh --address=10.61.5.1:8100` 连接。
 
 默认每步最大位置变化为2个控制单位，配置项为 `max_delta_per_step`。服务器接口使用明文 RPC，客户端需要能访问服务器私网地址；请在原可信内网使用。
 

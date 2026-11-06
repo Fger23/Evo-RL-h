@@ -283,7 +283,7 @@
     "src/lerobot/scripts/hotswitch_cli.py": "88335e6f510e21984704b3a6440e215855527b57428166c2d03ee8043a9bc6a4",
     "src/lerobot/scripts/hotswitch_rpc_benchmark.py": "e33de910ba8edb6a2e9cbf96a6cd85a979fa1f151f2bf8735f922d150f1e81ba",
     "src/lerobot/scripts/hotswitch_server.py": "1a6792fd84783ad26b78a3eee93a5e937bd567c7f7487e2b3f587ab725c98b9c",
-    "src/lerobot/scripts/hotswitch_so101_client.py": "47ffdd5434a8c1a554783d117121b521b108d619d78184d6c7bae8e771dd1fd1",
+    "src/lerobot/scripts/hotswitch_so101_client.py": "16bd765118262bb286699b946e336db6047908614fdcfd2e897a45363b43beea",
     "src/lerobot/scripts/hotswitch_training.py": "1ec2cf3d92ba89f3d69d73d7b7b60834bb3f6256e6b4adb24a390e6162ac2dd5",
     "src/lerobot/scripts/lerobot_calibrate.py": "ebbc7793b035a2aaa97865a333fac158c47a51804b6fa637bdc5151c2bbcae0c",
     "src/lerobot/scripts/lerobot_dataset_report.py": "e8e1f00c35e24e1038c7ac71c95deb90efd3ae3f99590c473e139d571c8d8055",
@@ -400,7 +400,7 @@
     "src/lerobot/values/pistar06/modeling_pistar06.py": "650dc8136670aa2fa5cdadacb4345907184796722d654c0f25981a8e318db022",
     "src/lerobot/values/pistar06/processor_pistar06.py": "161351b0d87c7a8950265d17c9ea8e92972cd1828ee6c2d171a14f662bff20b0"
   },
-  "source_tree_sha256": "8d4e89383f1311bcc69c7c0d55bbca04e694908b3e6b626491ba4f70aefb19f8",
+  "source_tree_sha256": "17016c40f7877c2c68c66ecde29fbb65681ce573cd9b7dbd8898165cd77672ab",
   "bytes_equivalent_to_frozen_source": false,
   "runtime_change_scope": "Canonical one-command foreground server, console logging switch, optional listen host and additive bimanual SO101 client. Frozen training trees unchanged.",
   "formal_frozen_tree_sha256": "cfdd21d4a63d8974b8df06f3c36884d58ff6f99f49bee346afb43bac773cae63",
@@ -452,5 +452,16 @@
     "training_units": "normalized",
     "physical_robot_tested": false,
     "bundle_manifest_sha256": "e985a93df8f917f7abab4d892d99cee0b4b621d61199d741ea79e1024d64bcde"
+  },
+  "port_and_cli_update": {
+    "previous_runtime_source_tree_sha256": "8d4e89383f1311bcc69c7c0d55bbca04e694908b3e6b626491ba4f70aefb19f8",
+    "server_host": "10.61.5.1",
+    "server_port": 8100,
+    "client_server_address_alias": "--remote_policy.server_address",
+    "legacy_address_alias_retained": true,
+    "cpu_tests_passed": 19,
+    "address_cli_forms_manually_validated": 2,
+    "physical_robot_tested": false,
+    "gpu_smoke_scope": "Default server on10.61.5.1:8100 loaded formal model and returned50x12 finite actions before client-only argparse alias; server/backend unchanged."
   }
 }
