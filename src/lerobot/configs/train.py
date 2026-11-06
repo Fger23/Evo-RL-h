@@ -73,6 +73,8 @@ class TrainPipelineConfig(HubMixin):
     eval: EvalConfig = field(default_factory=EvalConfig)
     wandb: WandBConfig = field(default_factory=WandBConfig)
     peft: PeftConfig | None = None
+    # Optional content-hash proof for single-device joint LoRA runs.
+    verify_peft_base: bool = False
     acp: ACPConfig = field(default_factory=ACPConfig)
 
     # RA-BC (Reward-Aligned Behavior Cloning) parameters

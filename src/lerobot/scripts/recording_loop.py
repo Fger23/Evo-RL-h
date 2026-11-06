@@ -114,7 +114,7 @@ def record_loop(
     policy_sync_executor: PolicySyncDualArmExecutor | None = None,
     remote_policy_client: RemotePolicyActionClient | None = None,
     intervention_state_machine_enabled: bool = True,
-    collector_policy_id_policy: str = "policy",
+    collector_policy_id_policy: str | None = None,
     collector_policy_id_human: str = "human",
     acp_inference: ACPInferenceConfig | None = None,
     communication_retry_timeout_s: float = 2.0,
@@ -246,192 +246,225 @@ def record_loop(
                 sleep_s = interval_s if interval_s > 0.0 else remaining_s
                 time.sleep(min(sleep_s, remaining_s))
 
-    timestamp = 0 # 从录制开始到当前帧累计运行秒数
-    step_idx = 0
-    start_episode_t = time.perf_counter() # 录制开始的时间戳
-    while timestamp < control_time_s:
-        start_loop_t = time.perf_counter() # 当前帧录制开始的时间戳
+    end_recording_episode = None
+    if remote_policy_client is not None:
+        begin_episode = getattr(remote_policy_client, "begin_recording_episode", None)
+        end_recording_episode = getattr(remote_policy_client, "end_recording_episode", None)
+        if callable(begin_episode):
+            begin_episode(dataset.features)
+    recording_episode_failed = True
+    try:
+        timestamp = 0 # 从录制开始到当前帧累计运行秒数
+        step_idx = 0
+        start_episode_t = time.perf_counter() # 录制开始的时间戳
+        while timestamp < control_time_s:
+            start_loop_t = time.perf_counter() # 当前帧录制开始的时间戳
 
-        if events["exit_early"]:
-            events["exit_early"] = False
-            break
+            if events["exit_early"]:
+                events["exit_early"] = False
+                break
 
-        if events.get("toggle_intervention", False):
-            events["toggle_intervention"] = False
-            if intervention_enabled:
-                if intervention_state == INTERVENTION_STATE_POLICY:
-                    intervention_state = INTERVENTION_STATE_ACTIVE
-                    set_teleop_manual_control(True)
-                    logging.info("Intervention enabled (S1): teleop actions now override policy execution.")
+            if events.get("toggle_intervention", False):
+                events["toggle_intervention"] = False
+                if intervention_enabled:
+                    if intervention_state == INTERVENTION_STATE_POLICY:
+                        intervention_state = INTERVENTION_STATE_ACTIVE
+                        set_teleop_manual_control(True)
+                        logging.info("Intervention enabled (S1): teleop actions now override policy execution.")
+                    else:
+                        intervention_state = INTERVENTION_STATE_RELEASE
+                        set_teleop_manual_control(False)
+                        if policy is not None and preprocessor is not None and postprocessor is not None:
+                            policy.reset()
+                            preprocessor.reset()
+                            postprocessor.reset()
+                            if acp_inference.enable and acp_inference.use_cfg:
+                                cond_policy_runtime_state = _capture_policy_runtime_state(policy)
+                                uncond_policy_runtime_state = _capture_policy_runtime_state(policy)
+                        if remote_policy_client is not None:
+                            remote_policy_client.reset()
+                        if policy is not None and preprocessor is not None and postprocessor is not None:
+                            logging.info("Policy cache reset on release: next policy action is recomputed.")
+                        if remote_policy_client is not None:
+                            logging.info("Remote policy action queue reset on release.")
+                        logging.info("Intervention release requested (S2): returning control to policy.")
                 else:
-                    intervention_state = INTERVENTION_STATE_RELEASE
-                    set_teleop_manual_control(False)
-                    if policy is not None and preprocessor is not None and postprocessor is not None:
-                        policy.reset()
-                        preprocessor.reset()
-                        postprocessor.reset()
-                        if acp_inference.enable and acp_inference.use_cfg:
-                            cond_policy_runtime_state = _capture_policy_runtime_state(policy)
-                            uncond_policy_runtime_state = _capture_policy_runtime_state(policy)
-                    if remote_policy_client is not None:
-                        remote_policy_client.reset()
-                    if policy is not None and preprocessor is not None and postprocessor is not None:
-                        logging.info("Policy cache reset on release: next policy action is recomputed.")
-                    if remote_policy_client is not None:
-                        logging.info("Remote policy action queue reset on release.")
-                    logging.info("Intervention release requested (S2): returning control to policy.")
-            else:
-                logging.info("Intervention toggle ignored because policy+teleop are not both active.")
+                    logging.info("Intervention toggle ignored because policy+teleop are not both active.")
 
-        # Get robot observation
-        obs = robot.get_observation()
-
-        # Applies a pipeline to the raw robot observation, default is IdentityProcessor
-        obs_processed = robot_observation_processor(obs)
-
-        if dataset is not None:
-            observation_frame = build_dataset_frame(dataset.features, obs_processed, prefix=OBS_STR)
-
-        # Get action from policy and/or teleop
-        act_processed_policy: RobotAction | None = None
-        act_processed_teleop: RobotAction | None = None
-        if not (intervention_enabled and intervention_state == INTERVENTION_STATE_ACTIVE):
+            # Commit a resident-task intent only at an accepted control boundary.
+            # The client supplies its robot-specific, validated holding callback.
+            effective_task = single_task
+            effective_policy_id = collector_policy_id_policy
             if remote_policy_client is not None:
-                act_processed_policy = remote_policy_client.get_action(
-                    observation=obs,
-                    task=single_task,
-                    timestep=step_idx,
+                remote_policy_client.control_boundary()
+                active_task_text = remote_policy_client.active_task_text
+                if active_task_text is not None:
+                    effective_task = active_task_text
+                if effective_policy_id is None:
+                    effective_policy_id = remote_policy_client.policy_id
+            if effective_policy_id is None:
+                effective_policy_id = "policy"
+
+            # Get robot observation
+            obs = robot.get_observation()
+
+            # Applies a pipeline to the raw robot observation, default is IdentityProcessor
+            obs_processed = robot_observation_processor(obs)
+
+            if dataset is not None:
+                observation_frame = build_dataset_frame(dataset.features, obs_processed, prefix=OBS_STR)
+
+            # Get action from policy and/or teleop
+            act_processed_policy: RobotAction | None = None
+            act_processed_teleop: RobotAction | None = None
+            if not (intervention_enabled and intervention_state == INTERVENTION_STATE_ACTIVE):
+                if remote_policy_client is not None:
+                    act_processed_policy = remote_policy_client.get_action(
+                        observation=obs,
+                        task=effective_task,
+                        timestep=step_idx,
+                    )
+                elif policy is not None and preprocessor is not None and postprocessor is not None:
+                    from lerobot.policies.utils import make_robot_action
+
+                    policy_action = _predict_policy_action_with_acp_inference(
+                        observation_frame=observation_frame,
+                        policy=policy,
+                        device=get_safe_torch_device(policy.config.device),
+                        preprocessor=preprocessor,
+                        postprocessor=postprocessor,
+                        use_amp=policy.config.use_amp,
+                        task=single_task,
+                        robot_type=robot.robot_type,
+                        acp_inference=acp_inference,
+                        cond_runtime_state=cond_policy_runtime_state,
+                        uncond_runtime_state=uncond_policy_runtime_state,
+                    )
+                    act_processed_policy = make_robot_action(policy_action, dataset.features)
+
+            if isinstance(teleop, Teleoperator):
+                act = run_with_connection_retry("teleop.get_action", teleop.get_action)
+
+                # Applies a pipeline to the raw teleop action, default is IdentityProcessor
+                act_processed_teleop = teleop_action_processor((act, obs))
+
+            elif isinstance(teleop, list):
+                arm_action = run_with_connection_retry("teleop_arm.get_action", teleop_arm.get_action)
+                arm_action = {f"arm_{k}": v for k, v in arm_action.items()}
+                keyboard_action = teleop_keyboard.get_action()
+                base_action = robot._from_keyboard_to_base_action(keyboard_action)
+                act = {**arm_action, **base_action} if len(base_action) > 0 else arm_action
+                act_processed_teleop = teleop_action_processor((act, obs))
+
+            if act_processed_policy is None and act_processed_teleop is None:
+                logging.info(
+                    "No policy or teleoperator provided, skipping action generation."
+                    "This is likely to happen when resetting the environment without a teleop device."
+                    "The robot won't be at its rest position at the start of the next episode."
                 )
-            elif policy is not None and preprocessor is not None and postprocessor is not None:
-                from lerobot.policies.utils import make_robot_action
+                continue
 
-                policy_action = _predict_policy_action_with_acp_inference(
-                    observation_frame=observation_frame,
-                    policy=policy,
-                    device=get_safe_torch_device(policy.config.device),
-                    preprocessor=preprocessor,
-                    postprocessor=postprocessor,
-                    use_amp=policy.config.use_amp,
-                    task=single_task,
-                    robot_type=robot.robot_type,
-                    acp_inference=acp_inference,
-                    cond_runtime_state=cond_policy_runtime_state,
-                    uncond_runtime_state=uncond_policy_runtime_state,
-                )
-                act_processed_policy = make_robot_action(policy_action, dataset.features)
-
-        if isinstance(teleop, Teleoperator):
-            act = run_with_connection_retry("teleop.get_action", teleop.get_action)
-
-            # Applies a pipeline to the raw teleop action, default is IdentityProcessor
-            act_processed_teleop = teleop_action_processor((act, obs))
-
-        elif isinstance(teleop, list):
-            arm_action = run_with_connection_retry("teleop_arm.get_action", teleop_arm.get_action)
-            arm_action = {f"arm_{k}": v for k, v in arm_action.items()}
-            keyboard_action = teleop_keyboard.get_action()
-            base_action = robot._from_keyboard_to_base_action(keyboard_action)
-            act = {**arm_action, **base_action} if len(base_action) > 0 else arm_action
-            act_processed_teleop = teleop_action_processor((act, obs))
-
-        if act_processed_policy is None and act_processed_teleop is None:
-            logging.info(
-                "No policy or teleoperator provided, skipping action generation."
-                "This is likely to happen when resetting the environment without a teleop device."
-                "The robot won't be at its rest position at the start of the next episode."
-            )
-            continue
-
-        if act_processed_teleop is not None:
-            last_teleop_action = act_processed_teleop
-            teleop_fallback_warned = False
-
-        policy_action_for_storage = (
-            act_processed_policy if act_processed_policy is not None else zero_policy_action
-        )
-
-        is_intervention = 0.0
-        if intervention_enabled and intervention_state == INTERVENTION_STATE_ACTIVE:
-            is_intervention = 1.0
             if act_processed_teleop is not None:
-                action_values = act_processed_teleop
-            elif last_teleop_action is not None:
-                action_values = last_teleop_action
-                if not teleop_fallback_warned:
-                    logging.warning(
-                        "Intervention is active but no fresh teleop action is available; reusing last teleop action."
-                    )
-                    teleop_fallback_warned = True
-            elif act_processed_policy is not None:
-                action_values = act_processed_policy
-                if not teleop_fallback_warned:
-                    logging.warning(
-                        "Intervention is active but teleop action is unavailable; falling back to policy action."
-                    )
-                    teleop_fallback_warned = True
+                last_teleop_action = act_processed_teleop
+                teleop_fallback_warned = False
+
+            policy_action_for_storage = (
+                act_processed_policy if act_processed_policy is not None else zero_policy_action
+            )
+
+            is_intervention = 0.0
+            if intervention_enabled and intervention_state == INTERVENTION_STATE_ACTIVE:
+                is_intervention = 1.0
+                if act_processed_teleop is not None:
+                    action_values = act_processed_teleop
+                elif last_teleop_action is not None:
+                    action_values = last_teleop_action
+                    if not teleop_fallback_warned:
+                        logging.warning(
+                            "Intervention is active but no fresh teleop action is available; reusing last teleop action."
+                        )
+                        teleop_fallback_warned = True
+                elif act_processed_policy is not None:
+                    action_values = act_processed_policy
+                    if not teleop_fallback_warned:
+                        logging.warning(
+                            "Intervention is active but teleop action is unavailable; falling back to policy action."
+                        )
+                        teleop_fallback_warned = True
+                else:
+                    action_values = zero_policy_action
+                    if not teleop_fallback_warned:
+                        logging.warning(
+                            "Intervention is active but no teleop/policy action is available; sending zero action."
+                        )
+                        teleop_fallback_warned = True
             else:
-                action_values = zero_policy_action
-                if not teleop_fallback_warned:
-                    logging.warning(
-                        "Intervention is active but no teleop/policy action is available; sending zero action."
-                    )
-                    teleop_fallback_warned = True
-        else:
-            action_values = act_processed_policy if act_processed_policy is not None else act_processed_teleop
+                action_values = act_processed_policy if act_processed_policy is not None else act_processed_teleop
 
-        # Applies a pipeline to the action, default is IdentityProcessor
-        robot_action_to_send = robot_action_processor((action_values, obs))
+            # Applies a pipeline to the action, default is IdentityProcessor
+            robot_action_to_send = robot_action_processor((action_values, obs))
 
-        # Send action to robot
-        # Action can eventually be clipped using `max_relative_target`,
-        # so action actually sent is saved in the dataset. action = postprocessor.process(action)
-        # TODO(steven, pepijn, adil): we should use a pipeline step to clip the action, so the sent action is the action that we input to the robot.
-        selected_from_policy = act_processed_policy is not None and action_values is act_processed_policy
-        if policy_sync_executor is not None and selected_from_policy:
-            _sent_action = run_with_connection_retry(
-                "policy_sync_executor.send_action",
-                lambda robot_action_to_send=robot_action_to_send: policy_sync_executor.send_action(
-                    robot_action_to_send
-                ),
-            )
-        else:
-            _sent_action = run_with_connection_retry(
-                "robot.send_action",
-                lambda robot_action_to_send=robot_action_to_send: robot.send_action(robot_action_to_send),
-            )
-
-        # Write to dataset
-        if dataset is not None:
-            action_frame = build_dataset_frame(dataset.features, action_values, prefix=ACTION)
-            policy_action_frame = build_dataset_frame(
-                dataset.features, policy_action_for_storage, prefix="complementary_info.policy_action"
-            )
-            frame = {**observation_frame, **action_frame, **policy_action_frame, "task": single_task}
-
-            if "complementary_info.is_intervention" in dataset.features:
-                frame["complementary_info.is_intervention"] = np.array([is_intervention], dtype=np.float32)
-            if "complementary_info.state" in dataset.features:
-                frame["complementary_info.state"] = np.array([intervention_state], dtype=np.float32)
-            if "complementary_info.collector_policy_id" in dataset.features:
-                frame["complementary_info.collector_policy_id"] = resolve_collector_policy_id(
-                    intervention_enabled=intervention_enabled,
-                    is_intervention=bool(is_intervention),
-                    selected_from_policy=selected_from_policy,
-                    policy_id=collector_policy_id_policy,
-                    human_id=collector_policy_id_human,
+            # Send action to robot
+            # Action can eventually be clipped using `max_relative_target`,
+            # so action actually sent is saved in the dataset. action = postprocessor.process(action)
+            # TODO(steven, pepijn, adil): we should use a pipeline step to clip the action, so the sent action is the action that we input to the robot.
+            selected_from_policy = act_processed_policy is not None and action_values is act_processed_policy
+            if policy_sync_executor is not None and selected_from_policy:
+                _sent_action = run_with_connection_retry(
+                    "policy_sync_executor.send_action",
+                    lambda robot_action_to_send=robot_action_to_send: policy_sync_executor.send_action(
+                        robot_action_to_send
+                    ),
                 )
-            dataset.add_frame(frame)
+            else:
+                _sent_action = run_with_connection_retry(
+                    "robot.send_action",
+                    lambda robot_action_to_send=robot_action_to_send: robot.send_action(robot_action_to_send),
+                )
 
-        if display_data:
-            log_rerun_data(
-                observation=obs_processed, action=action_values, compress_images=display_compressed_images
-            )
+            if remote_policy_client is not None and selected_from_policy:
+                remote_policy_client.confirm_sent_action(_sent_action)
 
-        if intervention_state == INTERVENTION_STATE_RELEASE:
-            intervention_state = INTERVENTION_STATE_POLICY
+            # Write to dataset
+            if dataset is not None:
+                action_frame = build_dataset_frame(dataset.features, action_values, prefix=ACTION)
+                policy_action_frame = build_dataset_frame(
+                    dataset.features, policy_action_for_storage, prefix="complementary_info.policy_action"
+                )
+                frame = {**observation_frame, **action_frame, **policy_action_frame, "task": effective_task}
 
-        dt_s = time.perf_counter() - start_loop_t
-        precise_sleep(max(1 / fps - dt_s, 0.0))
+                if "complementary_info.is_intervention" in dataset.features:
+                    frame["complementary_info.is_intervention"] = np.array([is_intervention], dtype=np.float32)
+                if "complementary_info.state" in dataset.features:
+                    frame["complementary_info.state"] = np.array([intervention_state], dtype=np.float32)
+                if "complementary_info.collector_policy_id" in dataset.features:
+                    frame["complementary_info.collector_policy_id"] = resolve_collector_policy_id(
+                        intervention_enabled=intervention_enabled,
+                        is_intervention=bool(is_intervention),
+                        selected_from_policy=selected_from_policy,
+                        policy_id=effective_policy_id,
+                        human_id=collector_policy_id_human,
+                    )
+                if remote_policy_client is not None:
+                    annotate = getattr(remote_policy_client, "recording_frame_attribution", None)
+                    if callable(annotate):
+                        frame.update(annotate(selected_from_policy=selected_from_policy))
+                dataset.add_frame(frame)
 
-        timestamp = time.perf_counter() - start_episode_t ## 更新已录制时长
-        step_idx += 1
+            if display_data:
+                log_rerun_data(
+                    observation=obs_processed, action=action_values, compress_images=display_compressed_images
+                )
+
+            if intervention_state == INTERVENTION_STATE_RELEASE:
+                intervention_state = INTERVENTION_STATE_POLICY
+
+            dt_s = time.perf_counter() - start_loop_t
+            precise_sleep(max(1 / fps - dt_s, 0.0))
+
+            timestamp = time.perf_counter() - start_episode_t ## 更新已录制时长
+            step_idx += 1
+        recording_episode_failed = False
+    finally:
+        if callable(end_recording_episode):
+            end_recording_episode(failed=recording_episode_failed)

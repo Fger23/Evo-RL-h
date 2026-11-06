@@ -20,6 +20,7 @@ takeover semantics stay in one place.
 """
 
 import logging
+import math
 import pickle  # nosec
 import threading
 import time
@@ -62,15 +63,17 @@ class RemotePolicyRecordConfig:
     obs_queue_timeout_s: float = 10.0
     rtc_d_monitor_address: str = ""
     rename_map: dict[str, str] = field(default_factory=dict)
+    # Resident-task mode uses a server registry; no model path is sent remotely.
+    task_id: str = ""
 
     def __post_init__(self) -> None:
         if not self.enable:
             return
         if not self.server_address:
             raise ValueError("`remote_policy.server_address` cannot be empty.")
-        if not self.policy_type:
+        if not self.policy_type and not self.task_id:
             raise ValueError("`remote_policy.policy_type` is required when remote policy is enabled.")
-        if not self.pretrained_name_or_path:
+        if not self.pretrained_name_or_path and not self.task_id:
             raise ValueError(
                 "`remote_policy.pretrained_name_or_path` is required when remote policy is enabled."
             )
@@ -92,13 +95,29 @@ class RemotePolicyRecordConfig:
 class RemotePolicyActionClient:
     """Small synchronous client for remote policy actions during recording."""
 
-    def __init__(self, cfg: RemotePolicyRecordConfig, robot: "Robot", fps: int):
+    _hot = None
+    _hot_transport = None
+
+    def __init__(
+        self, cfg: RemotePolicyRecordConfig, robot: "Robot", fps: int, *, safe_hold=None, validate_action=None
+    ):
         if not cfg.enable:
             raise ValueError("RemotePolicyActionClient requires `cfg.enable=true`.")
 
         self.cfg = cfg
         self.robot = robot
         self.environment_dt = 1 / fps
+        self._hot = None
+        self._hot_transport = None
+        self._safe_hold = safe_hold
+        self._validate_action = validate_action
+        from lerobot.utils.recording_attribution import RecordingEpisodeAttribution
+
+        self._recording_attribution = RecordingEpisodeAttribution()
+        if cfg.task_id and not callable(safe_hold):
+            raise ValueError("Resident recording requires an explicitly validated robot safe_hold callback")
+        if cfg.task_id and not callable(validate_action):
+            raise ValueError("Resident recording requires configured action limits and continuity validation")
         import grpc
 
         from lerobot.transport import services_pb2, services_pb2_grpc
@@ -132,9 +151,43 @@ class RemotePolicyActionClient:
 
     @property
     def policy_id(self) -> str:
+        if self._hot is not None:
+            return self._hot.status["task_id"]
         return self.cfg.pretrained_name_or_path or self.cfg.policy_type or "remote_policy"
 
+    @property
+    def active_task_text(self) -> str | None:
+        """Untagged registry text for frame annotations; legacy callers supply their own text."""
+        if self._hot is None:
+            return None
+        status = self._hot.status
+        return status["task_metadata"][status["task_id"]]["task_text"]
+
     def start(self) -> None:
+        if self.cfg.task_id:
+            from lerobot.async_inference.hotswitch.runtime import GrpcHotSwitchTransport, HotSwitchClientCore
+
+            owner = self
+
+            class RecordingClientCore(HotSwitchClientCore):
+                def switch(self, task_id, switch_id=None):
+                    # Covers direct switches AND intents discovered inside
+                    # control_boundary, under the same lock as actual commit.
+                    with self.control_lock:
+                        owner._assert_recording_control_thread()
+                        owner._check_recording_task_switch(task_id)
+                        return super().switch(task_id, switch_id)
+
+            self._hot_transport = GrpcHotSwitchTransport(self.cfg.server_address, self._rpc_timeout_s)
+            self._hot = RecordingClientCore(
+                self._hot_transport,
+                self._safe_hold,
+                self._validate_action,
+                minimum_action_interval_s=self.environment_dt,
+            )
+            self._hot.connect(self.cfg.task_id)
+            self._validate_hot_schema()
+            return
         from lerobot.async_inference.helpers import RemotePolicyConfig, map_robot_keys_to_lerobot_features
 
         self.stub.Ready(self.services_pb2.Empty(), timeout=self._rpc_timeout_s)
@@ -150,11 +203,23 @@ class RemotePolicyActionClient:
         logging.info("Remote policy recording client connected to %s.", self.cfg.server_address)
 
     def stop(self) -> None:
+        if self._hot_transport is not None:
+            self._hot_transport.close()
         self.channel.close()
         if self.rtc_d_telemetry is not None:
             self.rtc_d_telemetry.close()
 
     def reset(self) -> None:
+        if self._hot is not None:
+            with self._hot.control_lock:
+                self._assert_recording_control_thread()
+                guard = getattr(self, "_recording_attribution", None)
+                if guard is not None:
+                    guard.ensure_usable()
+                self._safe_hold()
+                task_id, session = self._hot.status["task_id"], self._hot.status["session_id"]
+                self._hot.connect(task_id, previous_session_id=session)
+            return
         self._wait_for_background_request()
         with self._state_lock:
             self._generation += 1
@@ -362,6 +427,28 @@ class RemotePolicyActionClient:
         return {key: action_tensor[i].item() for i, key in enumerate(self.robot.action_features)}
 
     def get_action(self, observation: dict, task: str | None, timestep: int) -> RobotAction:
+        if self._hot is not None:
+            self._assert_recording_control_thread()
+            from types import SimpleNamespace
+
+            from lerobot.async_inference.helpers import (
+                map_robot_keys_to_lerobot_features,
+                raw_observation_to_observation,
+            )
+
+            meta = self._hot.status["task_metadata"][self._hot.status["task_id"]]
+            # Synchronous first implementation explicitly holds at refill boundaries.
+            # A keep-alive/servo implementation must be supplied by safe_hold.
+            if len(self._hot.queue) <= meta.get("prefix_steps", 0):
+                self._safe_hold()
+                formatted = raw_observation_to_observation(
+                    observation,
+                    map_robot_keys_to_lerobot_features(self.robot),
+                    {key: SimpleNamespace(shape=shape) for key, shape in meta["image_features"].items()},
+                )
+                self._hot.request_actions(formatted)
+            action = self._hot.next_action()
+            return dict(zip(self.robot.action_features, action, strict=True))
         if self._ready_to_send_observation():
             with self._state_lock:
                 queue_is_empty = not self.action_queue
@@ -375,3 +462,138 @@ class RemotePolicyActionClient:
             self.latest_action = timed_action
             self.latest_action_timestep = timed_action.get_timestep()
         return self._tensor_to_action(timed_action.get_action())
+
+    def _validate_hot_schema(self):
+        try:
+            meta = self._hot.status["task_metadata"][self._hot.status["task_id"]]
+            if list(self.robot.action_features) != meta["action_names"]:
+                raise ValueError("Robot action order differs from registered task schema")
+            frequency = float(meta["control_hz"])
+            if (
+                not math.isfinite(frequency)
+                or frequency <= 0
+                or abs(frequency - 1 / self.environment_dt) > 1e-6
+            ):
+                raise ValueError("Robot control frequency differs from registered task schema")
+            units = meta.get("action_units")
+            unknown = ("unverified", "unknown", "unspecified", "unconfirmed", "n/a")
+            if (
+                not isinstance(units, list)
+                or len(units) != len(meta["action_names"])
+                or any(
+                    not isinstance(unit, str)
+                    or not unit.strip()
+                    or any(marker in unit.casefold() for marker in unknown)
+                    for unit in units
+                )
+            ):
+                raise ValueError("Physical recording requires verified units for every registered action")
+        except Exception:
+            # Schema validation runs on the control thread. A missing/invalid
+            # field must fail closed before any further command is selected.
+            with self._hot.lock:
+                self._hot.stopped = True
+                self._hot.queue.clear()
+                self._hot.queue_identity = None
+                self._hot.pending_identity = None
+                clock_wakeup = getattr(self._hot, "_action_clock_wakeup", None)
+                if clock_wakeup is not None:
+                    clock_wakeup.set()
+            self._safe_hold()
+            raise
+
+    def request_task_switch(self, task_id, switch_id=None):
+        """May be called from another thread; commit happens at a control boundary."""
+        import uuid
+
+        if self._hot is None:
+            raise RuntimeError("Legacy protocol does not support resident task switching")
+        with self._hot.control_lock:
+            # This method is explicitly callable by an intent/UI thread. A
+            # rejected intent is a pure error: never call SDK hold, stop or
+            # mutate execution queues from that thread.
+            guard = getattr(self, "_recording_attribution", None)
+            if guard is not None:
+                guard.check_switch(task_id)
+            return self._hot_transport.request_switch(
+                task_id, switch_id or uuid.uuid4().hex, self._hot.status["session_id"]
+            )
+
+    def _assert_recording_control_thread(self):
+        owner = getattr(self, "_recording_control_thread", None)
+        if owner is not None and threading.get_ident() != owner:
+            from lerobot.utils.recording_attribution import RecordingAttributionError
+
+            raise RecordingAttributionError("Only the recording control thread may execute this operation")
+
+    def _recording_failure(self):
+        self._assert_recording_control_thread()
+        guard = getattr(self, "_recording_attribution", None)
+        if guard is not None:
+            guard.end(failed=True)
+        self._hot.stop()
+        self._safe_hold()
+
+    def _check_recording_task_switch(self, task_id):
+        guard = getattr(self, "_recording_attribution", None)
+        if guard is not None:
+            try:
+                guard.check_switch(task_id)
+            except Exception:
+                self._recording_failure()
+                raise
+
+    def begin_recording_episode(self, features):
+        """Bind the real dataset schema before selecting this episode's actions."""
+        if self._hot is None:
+            return None
+        with self._hot.control_lock:
+            self._assert_recording_control_thread()
+            self._recording_control_thread = threading.get_ident()
+            try:
+                return self._recording_attribution.begin(features, self._hot.status)
+            except Exception:
+                self._recording_failure()
+                raise
+
+    def end_recording_episode(self, *, failed=False):
+        if self._hot is None:
+            return
+        with self._hot.control_lock:
+            self._assert_recording_control_thread()
+            if failed:
+                self._recording_failure()
+            else:
+                self._recording_attribution.end()
+                self._recording_control_thread = None
+
+    def recording_frame_attribution(self, *, selected_from_policy):
+        if self._hot is None:
+            return {}
+        with self._hot.control_lock, self._hot.lock:
+            self._assert_recording_control_thread()
+            try:
+                if selected_from_policy and self._hot.pending is not None:
+                    from lerobot.utils.recording_attribution import RecordingAttributionError
+
+                    raise RecordingAttributionError("Policy frame has an unconfirmed pending command")
+                return self._recording_attribution.frame(
+                    self._hot.status, self._hot.last_accepted_identity,
+                    selected_from_policy=selected_from_policy,
+                )
+            except Exception:
+                self._recording_failure()
+                raise
+
+    def control_boundary(self):
+        """Recording control thread calls this before taking a fresh observation."""
+        if self._hot is not None:
+            self._assert_recording_control_thread()
+            self._hot.control_boundary()
+            self._validate_hot_schema()
+
+    def confirm_sent_action(self, actual):
+        if self._hot is not None:
+            self._assert_recording_control_thread()
+            values = None if actual is None else [actual[key] for key in self.robot.action_features]
+            self._hot.confirm_action(values)

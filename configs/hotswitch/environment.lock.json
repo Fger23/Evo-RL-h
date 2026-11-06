@@ -1,0 +1,976 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-11-03",
+  "timezone": "Asia/Shanghai",
+  "lock_kind": "observed_version_and_source_lock_with_read_only_base_environment",
+  "python_version": "3.10.12",
+  "platform": "Linux x86_64 glibc 2.39",
+  "torch_cuda_build": "12.6",
+  "repository": {
+    "url": "https://github.com/Fger23/Evo-RL",
+    "reference_head": "e9d277ae0650fb3fb7e991fcfa87399b20ce1a66",
+    "pilot_source_snapshot": "/nfs/lerobot/s101/hot_switch/20261103/runs/pilot_r1/source_snapshot",
+    "pilot_snapshot_tree_sha256": "305942b0bf859bd78403ca4ce89ac0b04439520681ef00d5d5ec8fed8e2ed319",
+    "pilot_snapshot_file_count": 602,
+    "manifest": "/nfs/lerobot/s101/hot_switch/20261103/runs/pilot_r1/source_snapshot_manifest.json",
+    "formal_training_requires_a_new_verified_snapshot": true,
+    "env_clean_gpu_qa_source": {
+      "snapshot": "/nfs/lerobot/s101/hot_switch/20261103/validation/clean_gpu_source_r1/source_snapshot",
+      "snapshot_tree_sha256": "21c086d77146021d002140bf51cf4ca9cd0000f0a69ca717c19cbd9f2248a78a",
+      "snapshot_file_count": 620,
+      "manifest": "/nfs/lerobot/s101/hot_switch/20261103/validation/clean_gpu_source_r1/source_snapshot_manifest.json",
+      "manifest_sha256": "7541b2fdc41bbf3f83bb013068abe736e35b43dd4b0a1b194814f06d2c151fdc",
+      "immutable_runtime_source": true,
+      "validation_status_metadata_updated_after_execution": true
+    }
+  },
+  "shared_base_environment": {
+    "python": "/home/baiyuntian/miniforge3/envs/evo-rl/bin/python",
+    "modified_by_this_task": false,
+    "packages_read_only_reused": true
+  },
+  "critical_packages": {
+    "torch": {
+      "version": "2.7.1",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/torch-2.7.1.dist-info",
+      "direct_url": null
+    },
+    "torchvision": {
+      "version": "0.22.1",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/torchvision-0.22.1.dist-info",
+      "direct_url": null
+    },
+    "transformers": {
+      "version": "4.53.3",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/transformers-4.53.3.dist-info",
+      "direct_url": {
+        "url": "https://github.com/huggingface/transformers.git",
+        "vcs_info": {
+          "commit_id": "dcddb970176382c0fcf4521b0c0e6fc15894dfe0",
+          "requested_revision": "fix/lerobot_openpi",
+          "vcs": "git"
+        }
+      }
+    },
+    "peft": {
+      "version": "0.19.1",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/peft-0.19.1.dist-info",
+      "direct_url": null
+    },
+    "accelerate": {
+      "version": "1.13.0",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/accelerate-1.13.0.dist-info",
+      "direct_url": null
+    },
+    "huggingface-hub": {
+      "version": "0.35.3",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/huggingface_hub-0.35.3.dist-info",
+      "direct_url": null
+    },
+    "grpcio": {
+      "version": "1.73.1",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/grpcio-1.73.1.dist-info",
+      "direct_url": null
+    },
+    "protobuf": {
+      "version": "6.31.1",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/protobuf-6.31.1.dist-info",
+      "direct_url": null
+    },
+    "safetensors": {
+      "version": "0.7.0",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/safetensors-0.7.0.dist-info",
+      "direct_url": null
+    },
+    "scipy": {
+      "version": "1.14.1",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/scipy-1.14.1.dist-info",
+      "direct_url": null
+    },
+    "numpy": {
+      "version": "2.2.6",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/numpy-2.2.6.dist-info",
+      "direct_url": null
+    },
+    "tokenizers": {
+      "version": "0.21.4",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/tokenizers-0.21.4.dist-info",
+      "direct_url": null
+    },
+    "datasets": {
+      "version": "4.1.1",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/datasets-4.1.1.dist-info",
+      "direct_url": null
+    },
+    "av": {
+      "version": "15.1.0",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/av-15.1.0.dist-info",
+      "direct_url": null
+    },
+    "torchcodec": {
+      "version": "0.5",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/torchcodec-0.5.dist-info",
+      "direct_url": null
+    },
+    "draccus": {
+      "version": "0.10.0",
+      "metadata_path": "/home/baiyuntian/miniforge3/envs/evo-rl/lib/python3.10/site-packages/draccus-0.10.0.dist-info",
+      "direct_url": null
+    },
+    "packaging": {
+      "version": "25.0",
+      "metadata_path": "/nfs/lerobot/s101/hot_switch/20261103/env-clean/lib/python3.10/site-packages/packaging-25.0.dist-info",
+      "direct_url": null
+    },
+    "setuptools": {
+      "version": "80.9.0",
+      "metadata_path": "/nfs/lerobot/s101/hot_switch/20261103/env-clean/lib/python3.10/site-packages/setuptools-80.9.0.dist-info",
+      "direct_url": null
+    }
+  },
+  "transformers_source": {
+    "direct_url": {
+      "url": "https://github.com/huggingface/transformers.git",
+      "vcs_info": {
+        "commit_id": "dcddb970176382c0fcf4521b0c0e6fc15894dfe0",
+        "requested_revision": "fix/lerobot_openpi",
+        "vcs": "git"
+      }
+    },
+    "critical_files": {
+      "models/gemma/modeling_gemma.py": {
+        "sha256": "236196720ba5446704cc95a221aa43dd217e39afd72d92496f6307b1cd13a18a",
+        "matches_locked_upstream": true
+      },
+      "models/paligemma/modeling_paligemma.py": {
+        "sha256": "b72b421de47b58662f9fc3f663100a333d31913d2d55a0a93a26fb364cf0657b",
+        "matches_locked_upstream": true
+      },
+      "models/siglip/modeling_siglip.py": {
+        "sha256": "ef2e99500f263fdd78db9d4d9a255e29d844eb92f53c25ad640f8056700ef84b",
+        "matches_locked_upstream": true
+      },
+      "models/siglip/check.py": {
+        "sha256": "93efc9ab01e707e4a68c00cb04620ef958091e11a8018d98588d3bba1cef960e",
+        "matches_locked_upstream": true
+      }
+    },
+    "GemmaRMSNorm_forward": "(self, x, cond=None)",
+    "compatibility_shim": "Repo-local _install_tokenwise_adarms supports per-token clean-prefix conditioning without editing Transformers files."
+  },
+  "runtime_source_selection": {
+    "environment_variable": "PYTHONPATH=<selected immutable source_snapshot>/src",
+    "use_python_module_entrypoints": true,
+    "original_editable_lerobot": {
+      "dir_info": {
+        "editable": true
+      },
+      "url": "file:///home/baiyuntian/training-rtc/Evo-RLT-rtc"
+    },
+    "local_clean_editable_lerobot": {
+      "version": "0.4.4",
+      "metadata_path": "/nfs/lerobot/s101/hot_switch/20261103/env-clean/lib/python3.10/site-packages/lerobot-0.4.4.dist-info",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///nfs/lerobot/s101/hot_switch/20261103/env_check_source"
+      }
+    },
+    "metadata_note": "Runtime PYTHONPATH may contain snapshot egg-info; inspect local venv .dist-info explicitly when auditing editable metadata."
+  },
+  "profiles": {
+    "validated_runtime": {
+      "environment": "/nfs/lerobot/s101/hot_switch/20261103/env",
+      "include_system_site_packages": true,
+      "validation": "REAL_GPU_MECHANISM_BENCHMARK_AND_OFFLINE_RPC_PASSED",
+      "packaging": "26.0",
+      "setuptools": "65.5.0",
+      "pip_check_exit_code": 1,
+      "known_conflicts": [
+        "lerobot requires packaging>=24.2,<26.0; installed 26.0",
+        "lerobot requires setuptools>=71.0.0,<81.0.0; installed 65.5.0"
+      ],
+      "modified": false
+    },
+    "clean_overlay": {
+      "environment": "/nfs/lerobot/s101/hot_switch/20261103/env-clean",
+      "base_prefix": "/home/baiyuntian/miniforge3/envs/evo-rl",
+      "include_system_site_packages": true,
+      "local_overlays": {
+        "packaging": "25.0",
+        "setuptools": "80.9.0"
+      },
+      "editable_metadata_source": "/nfs/lerobot/s101/hot_switch/20261103/env_check_source",
+      "source_archive_sha256": "a237bc68e906e28f9688d84c3a1207d11ed2963f697c0e52550e410266a35764",
+      "pip_check_exit_code": 0,
+      "pip_check_stdout": "No broken requirements found.",
+      "cpu_imports": "PASSED",
+      "cpu_backend_tests": 20,
+      "real_gpu_validation": "PASSED_OFFLINE_SMOKE_ACP_TRC_MAIN_AND_CHECKPOINT_RESUME",
+      "robot_validation": "NOT_EXECUTED",
+      "stale_local_ensurepip_metadata_quarantine": "/nfs/lerobot/s101/hot_switch/20261103/work/envclean_metadata_quarantine/setuptools-65.5.0.dist-info",
+      "cpu_frozen_source_validation": {
+        "status": "PASSED",
+        "platform": "Linux",
+        "unittest_tests": 110,
+        "tools_pytest_tests": 38,
+        "skipped_tests": 0,
+        "evidence": [
+          "validation/remote/cpu_unittest.log",
+          "validation/remote/cpu_tools_pytest.log"
+        ],
+        "note": "Independent frozen-QA-source run; do not add the earlier overlapping 20 backend tests to these counts."
+      },
+      "real_gpu_qa": {
+        "status": "CLEAN_GPU_QA_PASSED",
+        "environment_python": "/nfs/lerobot/s101/hot_switch/20261103/env-clean/bin/python",
+        "root": "/nfs/lerobot/s101/hot_switch/20261103/validation/clean_gpu_qa_r1",
+        "runtime_source": {
+          "snapshot": "/nfs/lerobot/s101/hot_switch/20261103/validation/clean_gpu_source_r1/source_snapshot",
+          "snapshot_tree_sha256": "21c086d77146021d002140bf51cf4ca9cd0000f0a69ca717c19cbd9f2248a78a",
+          "snapshot_file_count": 620,
+          "manifest": "/nfs/lerobot/s101/hot_switch/20261103/validation/clean_gpu_source_r1/source_snapshot_manifest.json",
+          "manifest_sha256": "7541b2fdc41bbf3f83bb013068abe736e35b43dd4b0a1b194814f06d2c151fdc",
+          "immutable_runtime_source": true,
+          "validation_status_metadata_updated_after_execution": true
+        },
+        "queue_status": "/nfs/lerobot/s101/hot_switch/20261103/validation/after_pilot_r1/queue_status.json",
+        "queue_stage": "clean_qa",
+        "exit_code": 0,
+        "elapsed_s": 472.5389399509877,
+        "started_utc": "2026-11-03T11:33:59.705957+00:00",
+        "ended_utc": "2026-11-03T11:41:52.244006+00:00",
+        "stage_script_sha256": "e352e75b63be1f43fbab50c5aad5b5f23fe47b15ab2e78433cfb31f33a83ee7e",
+        "phases": {
+          "smoke": "REAL_GPU_PASSED",
+          "main_initial": "REAL_GPU_PASSED",
+          "main_resume": "REAL_GPU_PASSED",
+          "completed_budget_resume_negative_case": "EXPECTED_REJECTION_CONFIRMED"
+        },
+        "evidence_summary": "validation/remote/clean_gpu_qa_summary.json",
+        "main_initial_coverage": [
+          [
+            0,
+            2
+          ]
+        ],
+        "main_resume_coverage": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "frozen_base_audit_sha256": "eaf62296e3d34438d90a86a1a99ce9d4bb2e76c4e4a5e10f90633c45a0d18304",
+        "scope": "Actual offline GPU mechanism/configuration/save-resume QA with immutable source; does not qualify formal training or physical robot validation."
+      },
+      "formal_training": "NOT_EXECUTED"
+    }
+  },
+  "pi_peft_extra": {
+    "status": "STATIC_REQUIREMENTS_CONSISTENT",
+    "pi_peft_extra": [
+      "transformers @ git+https://github.com/huggingface/transformers.git@dcddb970176382c0fcf4521b0c0e6fc15894dfe0",
+      "peft==0.19.1",
+      "scipy>=1.10.1,<1.15"
+    ],
+    "legacy_pi_and_peft_extras_unchanged": true,
+    "installed_peft_transformers_requirement": "transformers",
+    "legacy_transformers_dep": "transformers<5.0.0,>=4.57.1",
+    "custom_transformers_version": "4.53.3",
+    "fresh_resolver_install_executed": false
+  },
+  "protoc_build_tool": {
+    "runtime_environment_grpcio_tools_installed": false,
+    "runtime_uses_checked_in_generated_bindings": true,
+    "isolated_generation_version": "grpcio-tools==1.73.1"
+  },
+  "evidence_files": {
+    "validation/remote/environment_metadata.json": "f306050de9d845a08047593ce8946f23b1faf7957b8b2e76a6d0bc06fe3f7c8e",
+    "validation/remote/environment_clean_cpu.json": "e12454162751c94a36bf336585b9fc51556bafc00661123f603876a63a1cf6e0",
+    "validation/remote/environment_pip_check.txt": "d127c2d608a36fb57fd95aa953cfbc09136552696ddc7b11317114372f0ba82e",
+    "validation/remote/environment_clean_pip_check.txt": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+    "validation/remote/transformers_source_comparison.json": "7e11b1f873178716eb248fc2e529c86325f065fc4de971f28c2f816b872664d2",
+    "validation/remote/env_clean_install.log": "5b095e97b9bac910b74dcddbde2d5504ee634843dd7e12b17c20898b08a4ae74",
+    "validation/remote/clean_gpu_qa_summary.json": "af6ee4c0e3b60d761dca2e3d9109ea75e609678f63718c99e5a63e1c9fa4218b",
+    "validation/remote/clean_gpu_source_r1_manifest.json": "7541b2fdc41bbf3f83bb013068abe736e35b43dd4b0a1b194814f06d2c151fdc",
+    "validation/remote/cpu_unittest.log": "bb2c30329a6e667e50202612f5a7fd978315b58fb8a49f5195a92384640c70ef",
+    "validation/remote/cpu_tools_pytest.log": "7519c63e86a2c5a5de02d2b5c289172152264ae74be1b2c6da1b2fcb317ef684"
+  },
+  "installed_distribution_inventory": {
+    "accelerate": {
+      "version": "1.13.0",
+      "direct_url": null
+    },
+    "aiohappyeyeballs": {
+      "version": "2.6.1",
+      "direct_url": null
+    },
+    "aiohttp": {
+      "version": "3.13.5",
+      "direct_url": null
+    },
+    "aiosignal": {
+      "version": "1.4.0",
+      "direct_url": null
+    },
+    "annotated-doc": {
+      "version": "0.0.4",
+      "direct_url": null
+    },
+    "annotated-types": {
+      "version": "0.7.0",
+      "direct_url": null
+    },
+    "anyio": {
+      "version": "4.13.0",
+      "direct_url": null
+    },
+    "async-timeout": {
+      "version": "5.0.1",
+      "direct_url": null
+    },
+    "attrs": {
+      "version": "26.1.0",
+      "direct_url": null
+    },
+    "autocommand": {
+      "version": "2.2.2",
+      "direct_url": null
+    },
+    "av": {
+      "version": "15.1.0",
+      "direct_url": null
+    },
+    "backports-tarfile": {
+      "version": "1.2.0",
+      "direct_url": null
+    },
+    "certifi": {
+      "version": "2026.4.22",
+      "direct_url": null
+    },
+    "charset-normalizer": {
+      "version": "3.4.7",
+      "direct_url": null
+    },
+    "click": {
+      "version": "8.4.0",
+      "direct_url": null
+    },
+    "cloudpickle": {
+      "version": "3.1.2",
+      "direct_url": null
+    },
+    "cmake": {
+      "version": "4.1.3",
+      "direct_url": null
+    },
+    "cmeel": {
+      "version": "0.60.1",
+      "direct_url": null
+    },
+    "cmeel-assimp": {
+      "version": "6.0.2",
+      "direct_url": null
+    },
+    "cmeel-boost": {
+      "version": "1.89.0",
+      "direct_url": null
+    },
+    "cmeel-console-bridge": {
+      "version": "1.0.2.3",
+      "direct_url": null
+    },
+    "cmeel-octomap": {
+      "version": "1.10.0",
+      "direct_url": null
+    },
+    "cmeel-qhull": {
+      "version": "8.0.2.1",
+      "direct_url": null
+    },
+    "cmeel-tinyxml2": {
+      "version": "10.0.0",
+      "direct_url": null
+    },
+    "cmeel-urdfdom": {
+      "version": "4.0.1",
+      "direct_url": null
+    },
+    "cmeel-zlib": {
+      "version": "1.3.1",
+      "direct_url": null
+    },
+    "coal": {
+      "version": "3.0.2",
+      "direct_url": null
+    },
+    "contourpy": {
+      "version": "1.3.2",
+      "direct_url": null
+    },
+    "cycler": {
+      "version": "0.12.1",
+      "direct_url": null
+    },
+    "datasets": {
+      "version": "4.1.1",
+      "direct_url": null
+    },
+    "deepdiff": {
+      "version": "8.6.2",
+      "direct_url": null
+    },
+    "diffusers": {
+      "version": "0.35.2",
+      "direct_url": null
+    },
+    "dill": {
+      "version": "0.4.0",
+      "direct_url": null
+    },
+    "draccus": {
+      "version": "0.10.0",
+      "direct_url": null
+    },
+    "eigenpy": {
+      "version": "3.12.0",
+      "direct_url": null
+    },
+    "einops": {
+      "version": "0.8.2",
+      "direct_url": null
+    },
+    "evdev": {
+      "version": "1.9.3",
+      "direct_url": null
+    },
+    "exceptiongroup": {
+      "version": "1.3.1",
+      "direct_url": null
+    },
+    "farama-notifications": {
+      "version": "0.0.6",
+      "direct_url": null
+    },
+    "filelock": {
+      "version": "3.29.0",
+      "direct_url": null
+    },
+    "fonttools": {
+      "version": "4.64.0",
+      "direct_url": null
+    },
+    "frozenlist": {
+      "version": "1.8.0",
+      "direct_url": null
+    },
+    "fsspec": {
+      "version": "2025.9.0",
+      "direct_url": null
+    },
+    "gitdb": {
+      "version": "4.0.12",
+      "direct_url": null
+    },
+    "gitpython": {
+      "version": "3.1.50",
+      "direct_url": null
+    },
+    "grpcio": {
+      "version": "1.73.1",
+      "direct_url": null
+    },
+    "gymnasium": {
+      "version": "1.3.0",
+      "direct_url": null
+    },
+    "h11": {
+      "version": "0.16.0",
+      "direct_url": null
+    },
+    "hf-transfer": {
+      "version": "0.1.9",
+      "direct_url": null
+    },
+    "hf-xet": {
+      "version": "1.5.0",
+      "direct_url": null
+    },
+    "httpcore": {
+      "version": "1.0.9",
+      "direct_url": null
+    },
+    "httpx": {
+      "version": "0.28.1",
+      "direct_url": null
+    },
+    "huggingface-hub": {
+      "version": "0.35.3",
+      "direct_url": null
+    },
+    "idna": {
+      "version": "3.15",
+      "direct_url": null
+    },
+    "imageio": {
+      "version": "2.37.3",
+      "direct_url": null
+    },
+    "imageio-ffmpeg": {
+      "version": "0.6.0",
+      "direct_url": null
+    },
+    "importlib-metadata": {
+      "version": "9.0.0",
+      "direct_url": null
+    },
+    "inflect": {
+      "version": "7.3.1",
+      "direct_url": null
+    },
+    "iniconfig": {
+      "version": "2.3.0",
+      "direct_url": null
+    },
+    "inquirerpy": {
+      "version": "0.3.4",
+      "direct_url": null
+    },
+    "jaraco-collections": {
+      "version": "5.1.0",
+      "direct_url": null
+    },
+    "jaraco-context": {
+      "version": "5.3.0",
+      "direct_url": null
+    },
+    "jaraco-functools": {
+      "version": "4.0.1",
+      "direct_url": null
+    },
+    "jaraco-text": {
+      "version": "3.12.1",
+      "direct_url": null
+    },
+    "jinja2": {
+      "version": "3.1.6",
+      "direct_url": null
+    },
+    "jsonlines": {
+      "version": "4.0.0",
+      "direct_url": null
+    },
+    "kiwisolver": {
+      "version": "1.5.1",
+      "direct_url": null
+    },
+    "lerobot": {
+      "version": "0.4.4",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///nfs/lerobot/s101/hot_switch/20261103/env_check_source"
+      }
+    },
+    "libcoal": {
+      "version": "3.0.2",
+      "direct_url": null
+    },
+    "libpinocchio": {
+      "version": "3.9.0",
+      "direct_url": null
+    },
+    "markdown-it-py": {
+      "version": "4.2.0",
+      "direct_url": null
+    },
+    "markupsafe": {
+      "version": "3.0.3",
+      "direct_url": null
+    },
+    "matplotlib": {
+      "version": "3.10.9",
+      "direct_url": null
+    },
+    "mdurl": {
+      "version": "0.1.2",
+      "direct_url": null
+    },
+    "mergedeep": {
+      "version": "1.3.4",
+      "direct_url": null
+    },
+    "more-itertools": {
+      "version": "10.3.0",
+      "direct_url": null
+    },
+    "mpmath": {
+      "version": "1.3.0",
+      "direct_url": null
+    },
+    "multidict": {
+      "version": "6.7.1",
+      "direct_url": null
+    },
+    "multiprocess": {
+      "version": "0.70.16",
+      "direct_url": null
+    },
+    "mypy-extensions": {
+      "version": "1.1.0",
+      "direct_url": null
+    },
+    "networkx": {
+      "version": "3.4.2",
+      "direct_url": null
+    },
+    "numpy": {
+      "version": "2.2.6",
+      "direct_url": null
+    },
+    "nvidia-cublas-cu12": {
+      "version": "12.6.4.1",
+      "direct_url": null
+    },
+    "nvidia-cuda-cupti-cu12": {
+      "version": "12.6.80",
+      "direct_url": null
+    },
+    "nvidia-cuda-nvrtc-cu12": {
+      "version": "12.6.77",
+      "direct_url": null
+    },
+    "nvidia-cuda-runtime-cu12": {
+      "version": "12.6.77",
+      "direct_url": null
+    },
+    "nvidia-cudnn-cu12": {
+      "version": "9.5.1.17",
+      "direct_url": null
+    },
+    "nvidia-cufft-cu12": {
+      "version": "11.3.0.4",
+      "direct_url": null
+    },
+    "nvidia-cufile-cu12": {
+      "version": "1.11.1.6",
+      "direct_url": null
+    },
+    "nvidia-curand-cu12": {
+      "version": "10.3.7.77",
+      "direct_url": null
+    },
+    "nvidia-cusolver-cu12": {
+      "version": "11.7.1.2",
+      "direct_url": null
+    },
+    "nvidia-cusparse-cu12": {
+      "version": "12.5.4.2",
+      "direct_url": null
+    },
+    "nvidia-cusparselt-cu12": {
+      "version": "0.6.3",
+      "direct_url": null
+    },
+    "nvidia-nccl-cu12": {
+      "version": "2.26.2",
+      "direct_url": null
+    },
+    "nvidia-nvjitlink-cu12": {
+      "version": "12.6.85",
+      "direct_url": null
+    },
+    "nvidia-nvtx-cu12": {
+      "version": "12.6.77",
+      "direct_url": null
+    },
+    "opencv-python-headless": {
+      "version": "4.12.0.88",
+      "direct_url": null
+    },
+    "orderly-set": {
+      "version": "5.5.0",
+      "direct_url": null
+    },
+    "packaging": {
+      "version": "25.0",
+      "direct_url": null
+    },
+    "pandas": {
+      "version": "2.3.3",
+      "direct_url": null
+    },
+    "peft": {
+      "version": "0.19.1",
+      "direct_url": null
+    },
+    "pfzy": {
+      "version": "0.3.4",
+      "direct_url": null
+    },
+    "pillow": {
+      "version": "12.2.0",
+      "direct_url": null
+    },
+    "pin": {
+      "version": "3.9.0",
+      "direct_url": null
+    },
+    "pip": {
+      "version": "23.0.1",
+      "direct_url": null
+    },
+    "piper-sdk": {
+      "version": "0.6.1",
+      "direct_url": null
+    },
+    "platformdirs": {
+      "version": "4.9.6",
+      "direct_url": null
+    },
+    "pluggy": {
+      "version": "1.6.0",
+      "direct_url": null
+    },
+    "prompt-toolkit": {
+      "version": "3.0.52",
+      "direct_url": null
+    },
+    "propcache": {
+      "version": "0.5.2",
+      "direct_url": null
+    },
+    "protobuf": {
+      "version": "6.31.1",
+      "direct_url": null
+    },
+    "psutil": {
+      "version": "7.2.2",
+      "direct_url": null
+    },
+    "pyarrow": {
+      "version": "24.0.0",
+      "direct_url": null
+    },
+    "pydantic": {
+      "version": "2.13.4",
+      "direct_url": null
+    },
+    "pydantic-core": {
+      "version": "2.46.4",
+      "direct_url": null
+    },
+    "pygments": {
+      "version": "2.20.0",
+      "direct_url": null
+    },
+    "pynput": {
+      "version": "1.8.2",
+      "direct_url": null
+    },
+    "pyparsing": {
+      "version": "3.3.2",
+      "direct_url": null
+    },
+    "pyserial": {
+      "version": "3.5",
+      "direct_url": null
+    },
+    "pytest": {
+      "version": "8.4.2",
+      "direct_url": null
+    },
+    "python-can": {
+      "version": "4.6.1",
+      "direct_url": null
+    },
+    "python-dateutil": {
+      "version": "2.9.0.post0",
+      "direct_url": null
+    },
+    "python-xlib": {
+      "version": "0.33",
+      "direct_url": null
+    },
+    "pytz": {
+      "version": "2026.2",
+      "direct_url": null
+    },
+    "pyyaml": {
+      "version": "6.0.3",
+      "direct_url": null
+    },
+    "pyyaml-include": {
+      "version": "1.4.1",
+      "direct_url": null
+    },
+    "regex": {
+      "version": "2026.5.9",
+      "direct_url": null
+    },
+    "requests": {
+      "version": "2.34.2",
+      "direct_url": null
+    },
+    "rerun-sdk": {
+      "version": "0.26.2",
+      "direct_url": null
+    },
+    "rich": {
+      "version": "15.0.0",
+      "direct_url": null
+    },
+    "safetensors": {
+      "version": "0.7.0",
+      "direct_url": null
+    },
+    "scipy": {
+      "version": "1.14.1",
+      "direct_url": null
+    },
+    "sentry-sdk": {
+      "version": "2.60.0",
+      "direct_url": null
+    },
+    "setproctitle": {
+      "version": "1.3.8",
+      "direct_url": null
+    },
+    "setuptools": {
+      "version": "80.9.0",
+      "direct_url": null
+    },
+    "shellingham": {
+      "version": "1.5.4",
+      "direct_url": null
+    },
+    "six": {
+      "version": "1.17.0",
+      "direct_url": null
+    },
+    "smmap": {
+      "version": "5.0.3",
+      "direct_url": null
+    },
+    "sympy": {
+      "version": "1.14.0",
+      "direct_url": null
+    },
+    "termcolor": {
+      "version": "3.3.0",
+      "direct_url": null
+    },
+    "tokenizers": {
+      "version": "0.21.4",
+      "direct_url": null
+    },
+    "toml": {
+      "version": "0.10.2",
+      "direct_url": null
+    },
+    "tomli": {
+      "version": "2.4.1",
+      "direct_url": null
+    },
+    "torch": {
+      "version": "2.7.1",
+      "direct_url": null
+    },
+    "torchcodec": {
+      "version": "0.5",
+      "direct_url": null
+    },
+    "torchvision": {
+      "version": "0.22.1",
+      "direct_url": null
+    },
+    "tqdm": {
+      "version": "4.67.3",
+      "direct_url": null
+    },
+    "transformers": {
+      "version": "4.53.3",
+      "direct_url": {
+        "url": "https://github.com/huggingface/transformers.git",
+        "vcs_info": {
+          "commit_id": "dcddb970176382c0fcf4521b0c0e6fc15894dfe0",
+          "requested_revision": "fix/lerobot_openpi",
+          "vcs": "git"
+        }
+      }
+    },
+    "triton": {
+      "version": "3.3.1",
+      "direct_url": null
+    },
+    "typeguard": {
+      "version": "4.3.0",
+      "direct_url": null
+    },
+    "typer": {
+      "version": "0.25.1",
+      "direct_url": null
+    },
+    "typing-extensions": {
+      "version": "4.15.0",
+      "direct_url": null
+    },
+    "typing-inspect": {
+      "version": "0.9.0",
+      "direct_url": null
+    },
+    "typing-inspection": {
+      "version": "0.4.2",
+      "direct_url": null
+    },
+    "tzdata": {
+      "version": "2026.2",
+      "direct_url": null
+    },
+    "urllib3": {
+      "version": "2.7.0",
+      "direct_url": null
+    },
+    "wandb": {
+      "version": "0.24.2",
+      "direct_url": null
+    },
+    "wcwidth": {
+      "version": "0.7.0",
+      "direct_url": null
+    },
+    "wheel": {
+      "version": "0.46.3",
+      "direct_url": null
+    },
+    "wrapt": {
+      "version": "1.17.3",
+      "direct_url": null
+    },
+    "xxhash": {
+      "version": "3.7.0",
+      "direct_url": null
+    },
+    "yarl": {
+      "version": "1.23.0",
+      "direct_url": null
+    },
+    "zipp": {
+      "version": "4.1.0",
+      "direct_url": null
+    }
+  },
+  "reproduction_limits": [
+    "This is not a wheel-hash/fully hermetic offline lock.",
+    "Recorded versions and critical source hashes can be verified against the read-only shared base plus local overlays.",
+    "A fresh resolver installation of the entire stack has not been executed.",
+    "Clean overlay passed actual offline GPU smoke, ACP/TRC main trainer and checkpoint-resume QA on the recorded immutable source. Formal long training and physical robot validation remain NOT_EXECUTED."
+  ]
+}

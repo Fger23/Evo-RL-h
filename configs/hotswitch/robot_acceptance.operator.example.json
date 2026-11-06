@@ -1,0 +1,19 @@
+{
+  "status": "NOT_CONFIGURED: no hardware authorization or verified units are supplied",
+  "hardware_authorized": false,
+  "operator_id": "",
+  "robot_id": "",
+  "control_mode": "",
+  "task_sequence": ["A", "B", "A"],
+  "cycles_per_task": null,
+  "action_schema": {"names": [], "units": [], "control_hz": null},
+  "limits": {},
+  "hold_validation": {
+    "passed": false,
+    "robot_id": "",
+    "control_mode": "",
+    "evidence_path": "",
+    "max_hold_s": null
+  },
+  "driver": {}
+}

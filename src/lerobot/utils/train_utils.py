@@ -99,12 +99,21 @@ def save_checkpoint(
     pretrained_dir = checkpoint_dir / PRETRAINED_MODEL_DIR
     policy.save_pretrained(pretrained_dir)
     cfg.save_pretrained(pretrained_dir)
-    if cfg.peft is not None:
+    is_peft = cfg.peft is not None or bool(getattr(policy, "peft_config", None))
+    if is_peft:
         # When using PEFT, policy.save_pretrained will only write the adapter weights + config, not the
         # policy config which we need for loading the model. In this case we'll write it ourselves.
         policy.config.save_pretrained(pretrained_dir)
     if preprocessor is not None:
         preprocessor.save_pretrained(pretrained_dir)
+        if is_peft and getattr(policy.config, "type", None) == "pi05":
+            # Persist the actual in-memory tokenizer, rather than relying on an
+            # external directory still having identical contents when resuming.
+            tokenizers = [step.input_tokenizer for step in preprocessor.steps
+                          if getattr(step, "input_tokenizer", None) is not None]
+            if len(tokenizers) != 1:
+                raise ValueError("PI05 PEFT checkpoint requires exactly one initialized tokenizer")
+            tokenizers[0].save_pretrained(pretrained_dir / "tokenizer")
     if postprocessor is not None:
         postprocessor.save_pretrained(pretrained_dir)
     save_training_state(checkpoint_dir, step, optimizer, scheduler)

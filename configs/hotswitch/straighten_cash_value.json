@@ -1,0 +1,32 @@
+{
+  "source_dataset_root": "/nfs/lerobot/s101/hot_switch/20261103/data/straighten_cash_registered_r2",
+  "base_path": "/nfs/zxlong10/models/lerobot/pi05_base",
+  "vision_repo_id": "/nfs/zxlong10/models/google/siglip-so400m-patch14-384",
+  "language_repo_id": "/nfs/zxlong10/models/google/gemma-3-270m",
+  "tokenizer_name": "/nfs/zxlong10/models/paligemma-3b-pt-224",
+  "gpu": 5,
+  "coordination_root": "/nfs/lerobot/s101/hot_switch/20261103",
+  "seed": 1000,
+  "rtc_training_max_delay": 37,
+  "acp_indicator_dropout_prob": 0.3,
+  "profiles": {
+    "pilot": {
+      "scope": "Short pilot for adapter mechanism/performance assessment; not formal training or task success evaluation.",
+      "value_steps": 200, "value_batch_size": 8, "value_save_freq": 200,
+      "adapter_steps": 200, "adapter_batch_size": 1, "adapter_save_freq": 200,
+      "num_workers": 0
+    },
+    "formal": {
+      "scope": "Budgets copied from existing straighten_cash_0928_to_1010 value and ACP/TRC policy train_config; not asserted optimal for LoRA.",
+      "value_steps": 50000, "value_batch_size": 8, "value_save_freq": 25000,
+      "adapter_steps": 160000, "adapter_batch_size": 8, "adapter_save_freq": 40000,
+      "num_workers": 4
+    }
+  },
+  "provenance": {
+    "value_budget": "/nfs/baiyuntian/assets/models/straighten_cash_0928_to_1010/value_train/pistar06_iteration_1/checkpoints/last/pretrained_model/value_train_config.json",
+    "policy_budget": "/nfs/baiyuntian/assets/models/straighten_cash_0928_to_1010/policy/straighten_cash_pi05_trc_d37/checkpoints/160000/pretrained_model/train_config.json",
+    "second_task": "User explicitly deferred training a second task; A only.",
+    "action_units": "recorded_robot_units_unverified; physical deployment blocked until actual collection configuration is confirmed"
+  }
+}

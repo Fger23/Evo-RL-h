@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "purpose": "Candidate joint PI05 LoRA settings for explicitly selected audited target inventories.",
+  "status": "settings_example_not_a_training_result_or_optimality_claim",
+  "peft": {
+    "method_type": "LORA",
+    "r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.0,
+    "full_training_modules": []
+  },
+  "siglip_adapted": false,
+  "target_set_choices": {
+    "qv_and_action_time": "configs/hotswitch/targets_qv.actual.json",
+    "qkvo_mlp_and_action_time": "configs/hotswitch/targets_extended.actual.json"
+  },
+  "automatic_selection": false,
+  "workflow_argument_examples": [
+    "--targets configs/hotswitch/targets_qv.actual.json",
+    "--targets configs/hotswitch/targets_extended.actual.json"
+  ],
+  "note": "Pass the chosen inventory to tools/hotswitch_evorl_pipeline.py --targets alongside its other required run arguments. Existing pilot/formal configurations are unchanged. These CPU-meta inventories establish module coverage, not gradient updates or GPU performance."
+}

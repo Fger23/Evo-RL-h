@@ -67,8 +67,9 @@ class PolicyServer(services_pb2_grpc.AsyncInferenceServicer):
     prefix = "policy_server"
     logger = get_logger(prefix)
 
-    def __init__(self, config: PolicyServerConfig):
+    def __init__(self, config: PolicyServerConfig, hotswitch_runtime=None):
         self.config = config
+        self.hotswitch_runtime = hotswitch_runtime
         self.shutdown_event = threading.Event()
 
         # FPS measurement
@@ -90,6 +91,44 @@ class PolicyServer(services_pb2_grpc.AsyncInferenceServicer):
         self.preprocessor: PolicyProcessorPipeline[dict[str, Any], dict[str, Any]] | None = None
         self.postprocessor: PolicyProcessorPipeline[PolicyAction, PolicyAction] | None = None
 
+    def _hotswitch_call(self, request, context, operation):
+        from .hotswitch.runtime import PROTOCOL_VERSION
+
+        if self.hotswitch_runtime is None:
+            context.abort(grpc.StatusCode.UNIMPLEMENTED, "No resident task registry configured")
+        if request is not None and request.protocol_version != PROTOCOL_VERSION:
+            context.abort(grpc.StatusCode.FAILED_PRECONDITION, "Unsupported hot-switch protocol version")
+        try:
+            payload = {} if request is None else pickle.loads(request.data)  # nosec
+            result = operation(payload)
+            return services_pb2.HotSwitchMessage(protocol_version=PROTOCOL_VERSION, data=pickle.dumps(result))
+        except Exception as exc:
+            context.abort(grpc.StatusCode.FAILED_PRECONDITION, str(exc))
+
+    def HotSwitchStatus(self, request, context):  # noqa: N802
+        return self._hotswitch_call(None, context, lambda _: self.hotswitch_runtime.status())
+
+    def HotSwitchSession(self, request, context):  # noqa: N802
+        return self._hotswitch_call(
+            request, context, lambda p: self.hotswitch_runtime.open_session(p.get("previous_session_id"))
+        )
+
+    def HotSwitchTask(self, request, context):  # noqa: N802
+        return self._hotswitch_call(
+            request,
+            context,
+            lambda p: (
+                self.hotswitch_runtime.request_switch
+                if p.get("prepare_only")
+                else self.hotswitch_runtime.switch
+            )(p["task_id"], p["switch_id"], p["session_id"]),
+        )
+
+    def HotSwitchInfer(self, request, context):  # noqa: N802
+        return self._hotswitch_call(
+            request, context, self.hotswitch_runtime.infer if self.hotswitch_runtime else None
+        )
+
     @property
     def running(self):
         return not self.shutdown_event.is_set()
@@ -108,6 +147,10 @@ class PolicyServer(services_pb2_grpc.AsyncInferenceServicer):
             self._predicted_timesteps = set()
 
     def Ready(self, request, context):  # noqa: N802
+        if self.hotswitch_runtime is not None:
+            context.abort(
+                grpc.StatusCode.FAILED_PRECONDITION, "Resident server requires hot-switch protocol v1"
+            )
         client_id = context.peer()
         self.logger.info(f"Client {client_id} connected and ready")
         self._reset_server()
@@ -118,6 +161,10 @@ class PolicyServer(services_pb2_grpc.AsyncInferenceServicer):
     def SendPolicyInstructions(self, request, context):  # noqa: N802
         """Receive policy instructions from the robot client"""
 
+        if self.hotswitch_runtime is not None:
+            context.abort(
+                grpc.StatusCode.FAILED_PRECONDITION, "Resident server does not permit legacy model setup"
+            )
         if not self.running:
             self.logger.warning("Server is not running. Ignoring policy instructions.")
             return services_pb2.Empty()
@@ -374,13 +421,15 @@ class PolicyServer(services_pb2_grpc.AsyncInferenceServicer):
         )
 
         # ========== 调试信息开始 ==========
-        print(f"[DEBUG] action_tensor.shape = {action_tensor.shape}")   # 预期 (B, chunk_size, action_dim)
+        print(f"[DEBUG] action_tensor.shape = {action_tensor.shape}")  # 预期 (B, chunk_size, action_dim)
         # print(f"[DEBUG] self.policy.config.action_dim = {self.policy.config.action_dim}")
         # 如果 postprocessor 内部有 mean, std，也可打印（需要访问内部属性）
-        if hasattr(self.postprocessor, 'steps'):
+        if hasattr(self.postprocessor, "steps"):
             for step in self.postprocessor.steps:
-                if hasattr(step, 'mean') and hasattr(step, 'std'):
-                    print(f"[DEBUG] step {step.__class__.__name__} mean len={len(step.mean)} std len={len(step.std)}")
+                if hasattr(step, "mean") and hasattr(step, "std"):
+                    print(
+                        f"[DEBUG] step {step.__class__.__name__} mean len={len(step.mean)} std len={len(step.std)}"
+                    )
         # ========== 调试信息结束 ==========
 
         """4. Apply postprocessor"""

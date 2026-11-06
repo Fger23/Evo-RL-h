@@ -95,3 +95,6 @@ class PeftConfig:
     # the rank used for the adapter. In general a higher rank means more trainable parameters and closer to full
     # fine-tuning.
     r: int = 16
+    # None preserves PEFT's defaults for existing training commands.
+    lora_alpha: int | None = None
+    lora_dropout: float | None = None

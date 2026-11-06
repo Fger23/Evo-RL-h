@@ -436,7 +436,7 @@ def record(cfg: RecordConfig) -> LeRobotDataset:
             cfg.collector_policy_id_policy
             if cfg.collector_policy_id_policy is not None
             else (
-                remote_policy_client.policy_id
+                None
                 if remote_policy_client is not None
                 else infer_collector_policy_id(cfg.policy)
             )

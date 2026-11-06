@@ -119,6 +119,11 @@ def update_policy(
 
         # TODO(rcadene): policy.unnormalize_outputs(out_dict)
 
+    peft_training = bool(getattr(accelerator.unwrap_model(policy), "peft_config", None))
+    if peft_training and not bool(torch.isfinite(loss).all()):
+        optimizer.zero_grad(set_to_none=True)
+        raise FloatingPointError("Nonfinite PEFT training loss; optimizer step refused")
+
     # Use accelerator's backward method
     accelerator.backward(loss)
 
@@ -129,6 +134,10 @@ def update_policy(
         grad_norm = torch.nn.utils.clip_grad_norm_(
             policy.parameters(), float("inf"), error_if_nonfinite=False
         )
+
+    if peft_training and not bool(torch.isfinite(torch.as_tensor(grad_norm)).all()):
+        optimizer.zero_grad(set_to_none=True)
+        raise FloatingPointError("Nonfinite PEFT gradients; optimizer step refused")
 
     # Optimizer step
     with lock if lock is not None else nullcontext():
@@ -273,13 +282,18 @@ def train(
         cfg=cfg.policy,
         ds_meta=dataset.meta,
         rename_map=cfg.rename_map,
+        is_trainable=True,
     )
 
     if cfg.peft is not None:
-        logging.info("Using PEFT! Wrapping model.")
-        # Convert CLI peft config to dict for overrides
-        peft_cli_overrides = dataclasses.asdict(cfg.peft)
-        policy = policy.wrap_with_peft(peft_cli_overrides=peft_cli_overrides)
+        from peft import PeftModel
+
+        if isinstance(policy, PeftModel):
+            logging.info("Continuing the restored PEFT adapter without wrapping it again.")
+        else:
+            logging.info("Using PEFT! Wrapping model.")
+            peft_cli_overrides = dataclasses.asdict(cfg.peft)
+            policy = policy.wrap_with_peft(peft_cli_overrides=peft_cli_overrides)
 
     # Wait for all processes to finish policy creation before continuing
     accelerator.wait_for_everyone()
@@ -353,6 +367,21 @@ def train(
 
     if cfg.resume:
         step, optimizer, lr_scheduler = load_training_state(cfg.checkpoint_path, optimizer, lr_scheduler)
+
+    frozen_base_audit = None
+    if getattr(cfg, "verify_peft_base", False):
+        from lerobot.utils.peft_audit import FrozenPeftBaseAudit
+
+        if accelerator.num_processes != 1:
+            raise ValueError("verify_peft_base currently requires single-device training")
+        if not cfg.save_checkpoint:
+            raise ValueError("verify_peft_base requires saved checkpoints for artifact binding")
+        groups = ("vlm", "expert", "action_in_proj", "action_out_proj", "time_mlp_in", "time_mlp_out") if cfg.policy.type == "pi05" else ()
+        previous_audit = cfg.checkpoint_path / "training_state/peft_base_audit.json" if step else None
+        frozen_base_audit = FrozenPeftBaseAudit(policy, cfg.output_dir, required_groups=groups,
+                                               start_step=step, previous_report=previous_audit,
+                                               require_checkpoint_binding=True)
+        logging.info("Frozen Base audit started at actual step %d: %s", step, frozen_base_audit.before["sha256"])
 
     num_learnable_params = sum(p.numel() for p in policy.parameters() if p.requires_grad)
     num_total_params = sum(p.numel() for p in policy.parameters())
@@ -508,6 +537,8 @@ def train(
             if is_main_process:
                 logging.info(f"Checkpoint policy after step {step}")
                 checkpoint_dir = get_step_checkpoint_dir(cfg.output_dir, cfg.steps, step)
+                if frozen_base_audit is not None and (checkpoint_dir / "training_state/peft_base_audit.json").exists():
+                    raise FileExistsError(f"Refusing to overwrite audited checkpoint {checkpoint_dir}")
                 save_checkpoint(
                     checkpoint_dir=checkpoint_dir,
                     step=step,
@@ -518,6 +549,8 @@ def train(
                     preprocessor=preprocessor,
                     postprocessor=postprocessor,
                 )
+                if frozen_base_audit is not None:
+                    frozen_base_audit.checkpoint(accelerator.unwrap_model(policy), step, checkpoint_dir)
                 update_last_checkpoint(checkpoint_dir)
                 if wandb_logger:
                     wandb_logger.log_policy(checkpoint_dir)
@@ -572,6 +605,10 @@ def train(
                     wandb_logger.log_video(eval_info["overall"]["video_paths"][0], step, mode="eval")
 
             accelerator.wait_for_everyone()
+
+    if frozen_base_audit is not None:
+        frozen_base_audit.finish(accelerator.unwrap_model(policy), step)
+        logging.info("Frozen Base content hash unchanged after %d training steps", step)
 
     if eval_env:
         close_envs(eval_env)

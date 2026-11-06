@@ -142,7 +142,9 @@ def human_inloop_record(cfg: RecordConfig):
     cfg.enable_episode_outcome_labeling = True
     cfg.default_episode_success = "failure"
     cfg.enable_collector_policy_id = True
-    if cfg.collector_policy_id_policy is None:
+    if cfg.collector_policy_id_policy is None and not (
+        cfg.remote_policy.enable and cfg.remote_policy.task_id
+    ):
         cfg.collector_policy_id_policy = (
             cfg.remote_policy.pretrained_name_or_path
             if cfg.remote_policy.enable

@@ -87,7 +87,7 @@ class RobotClient:
     prefix = "robot_client"
     logger = get_logger(prefix)
 
-    def __init__(self, config: RobotClientConfig):
+    def __init__(self, config: RobotClientConfig, *, robot=None, connect_robot=True):
         """Initialize RobotClient with unified configuration.
 
         Args:
@@ -95,8 +95,10 @@ class RobotClient:
         """
         # Store configuration
         self.config = config
-        self.robot = make_robot_from_config(config.robot)
-        self.robot.connect()
+        self.robot = robot if robot is not None else make_robot_from_config(config.robot)
+        self._owns_robot_connection = connect_robot
+        if connect_robot:
+            self.robot.connect()
 
         lerobot_features = map_robot_keys_to_lerobot_features(self.robot)
 
@@ -187,7 +189,8 @@ class RobotClient:
         """Stop the robot client"""
         self.shutdown_event.set()
 
-        self.robot.disconnect()
+        if self._owns_robot_connection:
+            self.robot.disconnect()
         self.logger.debug("Robot disconnected")
 
         self.channel.close()
