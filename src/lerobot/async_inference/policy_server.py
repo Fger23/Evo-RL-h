@@ -152,10 +152,8 @@ class PolicyServer(services_pb2_grpc.AsyncInferenceServicer):
         self.lerobot_features = policy_specs.lerobot_features
         self.actions_per_chunk = policy_specs.actions_per_chunk
 
-        policy_class = get_policy_class(self.policy_type)
-
         start = time.perf_counter()
-        self.policy = policy_class.from_pretrained(policy_specs.pretrained_name_or_path)
+        self.policy = self._load_policy(policy_specs)
         rtc_config = getattr(policy_specs, "rtc_config", None)
         if rtc_config is not None:
             self.policy.config.rtc_config = rtc_config
@@ -168,10 +166,7 @@ class PolicyServer(services_pb2_grpc.AsyncInferenceServicer):
         self.preprocessor, self.postprocessor = make_pre_post_processors(
             self.policy.config,
             pretrained_path=policy_specs.pretrained_name_or_path,
-            preprocessor_overrides={
-                "device_processor": device_override,
-                "rename_observations_processor": {"rename_map": policy_specs.rename_map},
-            },
+            preprocessor_overrides=self._preprocessor_overrides(policy_specs),
             postprocessor_overrides={"device_processor": device_override},
         )
 
@@ -180,6 +175,18 @@ class PolicyServer(services_pb2_grpc.AsyncInferenceServicer):
         self.logger.info(f"Time taken to put policy on {self.device}: {end - start:.4f} seconds")
 
         return services_pb2.Empty()
+
+    def _load_policy(self, policy_specs: RemotePolicyConfig):
+        """Load the requested policy; specialized servers may override only this step."""
+        policy_class = get_policy_class(policy_specs.policy_type)
+        return policy_class.from_pretrained(policy_specs.pretrained_name_or_path)
+
+    def _preprocessor_overrides(self, policy_specs: RemotePolicyConfig):
+        """Default native overrides; specialized servers may relocate saved assets."""
+        return {
+            "device_processor": {"device": self.device},
+            "rename_observations_processor": {"rename_map": policy_specs.rename_map},
+        }
 
     def SendObservations(self, request_iterator, context):  # noqa: N802
         """Receive observations from the robot client"""
@@ -397,7 +404,6 @@ class PolicyServer(services_pb2_grpc.AsyncInferenceServicer):
 
         # ========== 调试信息开始 ==========
         print(f"[DEBUG] action_tensor.shape = {action_tensor.shape}")   # 预期 (B, chunk_size, action_dim)
-        print(f"[DEBUG] self.policy.config.action_dim = {self.policy.config.action_dim}")
         # 如果 postprocessor 内部有 mean, std，也可打印（需要访问内部属性）
         if hasattr(self.postprocessor, 'steps'):
             for step in self.postprocessor.steps:
