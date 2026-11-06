@@ -157,11 +157,7 @@ def value_train(
             "rename_map": cfg.rename_map
         }
         postprocessor_kwargs["postprocessor_overrides"] = {
-            "unnormalizer_processor": {
-                "stats": dataset.meta.stats,
-                "features": cfg.value.output_features or {},
-                "norm_map": cfg.value.normalization_mapping,
-            },
+            "device_processor": {"device": "cpu"},
         }
 
     preprocessor, postprocessor = make_pre_post_processors(

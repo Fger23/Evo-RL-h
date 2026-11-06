@@ -264,15 +264,25 @@ class AsyncInferenceStub(object):
                 request_serializer=lerobot_dot_transport_dot_services__pb2.Empty.SerializeToString,
                 response_deserializer=lerobot_dot_transport_dot_services__pb2.Empty.FromString,
                 _registered_method=True)
-        self.ControlPolicy = channel.unary_unary(
-                '/transport.AsyncInference/ControlPolicy',
-                request_serializer=lerobot_dot_transport_dot_services__pb2.PolicySetup.SerializeToString,
-                response_deserializer=lerobot_dot_transport_dot_services__pb2.Actions.FromString,
+        self.HotSwitchStatus = channel.unary_unary(
+                '/transport.AsyncInference/HotSwitchStatus',
+                request_serializer=lerobot_dot_transport_dot_services__pb2.Empty.SerializeToString,
+                response_deserializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
                 _registered_method=True)
-        self.Predict = channel.unary_unary(
-                '/transport.AsyncInference/Predict',
-                request_serializer=lerobot_dot_transport_dot_services__pb2.PolicySetup.SerializeToString,
-                response_deserializer=lerobot_dot_transport_dot_services__pb2.Actions.FromString,
+        self.HotSwitchSession = channel.unary_unary(
+                '/transport.AsyncInference/HotSwitchSession',
+                request_serializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
+                response_deserializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
+                _registered_method=True)
+        self.HotSwitchTask = channel.unary_unary(
+                '/transport.AsyncInference/HotSwitchTask',
+                request_serializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
+                response_deserializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
+                _registered_method=True)
+        self.HotSwitchInfer = channel.unary_unary(
+                '/transport.AsyncInference/HotSwitchInfer',
+                request_serializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
+                response_deserializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
                 _registered_method=True)
 
 
@@ -307,18 +317,27 @@ class AsyncInferenceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ControlPolicy(self, request, context):
-        """Optional hot-switch v1 capability-negotiated envelopes. These reuse the
-        existing trusted pickle transport. A legacy client keeps the methods above.
-        Control data: {protocol: "lerobot.hotswitch", version: 1, op: ...}.
+    def HotSwitchStatus(self, request, context):
+        """Versioned resident-task extension. No remote paths are accepted here.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Predict(self, request, context):
-        """Data is an InferenceRequest; response is an identity-bearing InferenceResponse.
-        """
+    def HotSwitchSession(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def HotSwitchTask(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def HotSwitchInfer(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -346,15 +365,25 @@ def add_AsyncInferenceServicer_to_server(servicer, server):
                     request_deserializer=lerobot_dot_transport_dot_services__pb2.Empty.FromString,
                     response_serializer=lerobot_dot_transport_dot_services__pb2.Empty.SerializeToString,
             ),
-            'ControlPolicy': grpc.unary_unary_rpc_method_handler(
-                    servicer.ControlPolicy,
-                    request_deserializer=lerobot_dot_transport_dot_services__pb2.PolicySetup.FromString,
-                    response_serializer=lerobot_dot_transport_dot_services__pb2.Actions.SerializeToString,
+            'HotSwitchStatus': grpc.unary_unary_rpc_method_handler(
+                    servicer.HotSwitchStatus,
+                    request_deserializer=lerobot_dot_transport_dot_services__pb2.Empty.FromString,
+                    response_serializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
             ),
-            'Predict': grpc.unary_unary_rpc_method_handler(
-                    servicer.Predict,
-                    request_deserializer=lerobot_dot_transport_dot_services__pb2.PolicySetup.FromString,
-                    response_serializer=lerobot_dot_transport_dot_services__pb2.Actions.SerializeToString,
+            'HotSwitchSession': grpc.unary_unary_rpc_method_handler(
+                    servicer.HotSwitchSession,
+                    request_deserializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
+                    response_serializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
+            ),
+            'HotSwitchTask': grpc.unary_unary_rpc_method_handler(
+                    servicer.HotSwitchTask,
+                    request_deserializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
+                    response_serializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
+            ),
+            'HotSwitchInfer': grpc.unary_unary_rpc_method_handler(
+                    servicer.HotSwitchInfer,
+                    request_deserializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
+                    response_serializer=lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -478,7 +507,7 @@ class AsyncInference(object):
             _registered_method=True)
 
     @staticmethod
-    def ControlPolicy(request,
+    def HotSwitchStatus(request,
             target,
             options=(),
             channel_credentials=None,
@@ -491,9 +520,9 @@ class AsyncInference(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/transport.AsyncInference/ControlPolicy',
-            lerobot_dot_transport_dot_services__pb2.PolicySetup.SerializeToString,
-            lerobot_dot_transport_dot_services__pb2.Actions.FromString,
+            '/transport.AsyncInference/HotSwitchStatus',
+            lerobot_dot_transport_dot_services__pb2.Empty.SerializeToString,
+            lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
             options,
             channel_credentials,
             insecure,
@@ -505,7 +534,7 @@ class AsyncInference(object):
             _registered_method=True)
 
     @staticmethod
-    def Predict(request,
+    def HotSwitchSession(request,
             target,
             options=(),
             channel_credentials=None,
@@ -518,9 +547,63 @@ class AsyncInference(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/transport.AsyncInference/Predict',
-            lerobot_dot_transport_dot_services__pb2.PolicySetup.SerializeToString,
-            lerobot_dot_transport_dot_services__pb2.Actions.FromString,
+            '/transport.AsyncInference/HotSwitchSession',
+            lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
+            lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def HotSwitchTask(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/transport.AsyncInference/HotSwitchTask',
+            lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
+            lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def HotSwitchInfer(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/transport.AsyncInference/HotSwitchInfer',
+            lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.SerializeToString,
+            lerobot_dot_transport_dot_services__pb2.HotSwitchMessage.FromString,
             options,
             channel_credentials,
             insecure,

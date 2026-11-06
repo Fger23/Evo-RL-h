@@ -1,3 +1,35 @@
+# Evo-RL Hot Switch
+
+基于 `Fger23/Evo-RL` 的改进仓库，保留原有 Evo-RL / LeRobot `src/lerobot` 结构和 Git 历史。基线提交：`e9d277ae0650fb3fb7e991fcfa87399b20ce1a66`。原项目说明保留在本文后半部分和 `docs/UPSTREAM_EVO_RL_README.md`。
+
+新增能力：π05 联合 LoRA、共享 Base 的常驻 Adapter 热切换、真实 gRPC 推理、session/epoch/request 隔离、录制帧策略归属和训练/导出/验收工具。Value、ACP 和训练时 RTC 保留原调用体系。
+
+## 在当前服务器使用
+
+```bash
+ssh -p 2222 baiyuntian@10.61.5.1
+cd /home/baiyuntian/baiyuntian/Evo-RL-hot-switch
+bash scripts/server.sh --gpu 1
+```
+
+服务端前台加载；客户端在另一台机器执行 `bash scripts/client.sh`，默认双 SO101 真机控制。`configs/hotswitch/client_so101.json` 已填入原 RTC_run.txt 的双臂和相机参数，训练单位已按你确认的原默认设置填为 normalized，首次使用前需核对设备身份；无需 tmux、RUN_DIR 或每次运行新目录。源码统一绑定本仓库的 `src/`。现有 Python 环境复用，模型、数据、日志和 checkpoint 保留在 NFS。单命令服务配置：`configs/hotswitch/server.json`。
+
+- **操作指南**：`docs/INFERENCE_GUIDE.zh-CN.md`（选 GPU、服务启动、客户端控制和停止）。
+- **目录与改动说明**：`docs/REPOSITORY_LAYOUT.md`。
+- **热切换设计**：`docs/HOT_SWITCH.md`。
+- **客户端代码**：根目录 `client.py`；离线预测示例保留在 `examples/hotswitch/infer_client.py`。
+- **CPU 回归**：`bash scripts/test_hotswitch.sh /nfs/baiyuntian/assets/model/NEW_TEST_DIRECTORY`。
+
+当前节点只授权 GPU1。模型进程使用指定 GPU；客户端使用 CPU，默认模式是双 SO101 真机控制。单命令服务加载和返回预测已在 GPU1 验证，客户端尚未做实机验收。
+
+已完成的正式 GPU 验收对应冻结的训练源码；本仓库合入了随后单独通过 CPU 验证的录制归属补丁。重整后的 CPU 回归单独留证，不将历史 GPU 结果冒充对新目录的重新测试。A_copy 是 A 的同权重机制副本；未测真机任务成功率。
+
+`20261104_gpu1/` 是忽略的原环境与冻结证据兼容目录，保留原绝对路径；日常开发和推理请使用根目录的 `src/` 与 `scripts/`。
+
+---
+
+## 原 Evo-RL README
+
 <h1 align="center">Evo-RL</h1>
 
 <p align="center">

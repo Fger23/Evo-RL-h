@@ -184,6 +184,8 @@ def get_logger(name: str, log_to_file: bool = True) -> logging.Logger:
         Configured logger instance
     """
     # Create logs directory if logging to file
+    if os.environ.get("LEROBOT_ASYNC_LOG_TO_FILE", "1").lower() in {"0", "false", "no"}:
+        log_to_file = False
     if log_to_file:
         os.makedirs("logs", exist_ok=True)
         log_file = Path(f"logs/{name}_{int(time.time())}.log")

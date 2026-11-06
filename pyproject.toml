@@ -155,6 +155,13 @@ hilserl = ["lerobot[transformers-dep]", "gym-hil>=0.1.13,<0.2.0", "lerobot[grpci
 # Features
 async = ["lerobot[grpcio-dep]", "matplotlib>=3.10.3,<4.0.0"]
 peft = ["lerobot[transformers-dep]", "peft>=0.18.0,<1.0.0"]
+# Joint PI05 LoRA stack validated by the hot-switch GPU mechanism tests.
+# Keep separate from `peft`: its generic Transformers extra excludes 4.53.3.
+pi-peft = [
+    "transformers @ git+https://github.com/huggingface/transformers.git@dcddb970176382c0fcf4521b0c0e6fc15894dfe0",
+    "peft==0.19.1",
+    "scipy>=1.10.1,<1.15",
+]
 
 # Development
 dev = ["pre-commit>=3.7.0,<5.0.0", "debugpy>=1.8.1,<1.9.0", "lerobot[grpcio-dep]", "grpcio-tools==1.73.1", "mypy>=1.19.1"]
@@ -196,6 +203,10 @@ all = [
 ]
 
 [project.scripts]
+evorl-server="lerobot.scripts.hotswitch_server:main"
+evorl-client="lerobot.scripts.hotswitch_so101_client:main"
+lerobot-hotswitch="lerobot.scripts.hotswitch_cli:main"
+lerobot-hotswitch-rpc-benchmark="lerobot.scripts.hotswitch_rpc_benchmark:main"
 lerobot-calibrate="lerobot.scripts.lerobot_calibrate:main"
 lerobot-find-cameras="lerobot.scripts.lerobot_find_cameras:main"
 lerobot-find-port="lerobot.scripts.lerobot_find_port:main"
@@ -206,7 +217,6 @@ lerobot-teleoperate="lerobot.scripts.lerobot_teleoperate:main"
 lerobot-eval="lerobot.scripts.lerobot_eval:main"
 lerobot-train="lerobot.scripts.lerobot_train:main"
 lerobot-train-trc="lerobot.scripts.lerobot_train_trc:main"
-lerobot-hotswitch="lerobot.scripts.lerobot_hotswitch:main"
 lerobot-rtc-test-d="lerobot.scripts.lerobot_rtc_test_d:main"
 lerobot-train-tokenizer="lerobot.scripts.lerobot_train_tokenizer:main"
 lerobot-dataset-viz="lerobot.scripts.lerobot_dataset_viz:main"

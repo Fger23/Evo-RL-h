@@ -285,7 +285,10 @@ class PreTrainedPolicy(nn.Module, HubMixin, abc.ABC):
             peft_cli_overrides: Optional dict of CLI overrides (method_type, target_modules, r, etc.)
                 These are merged with policy defaults to build the final config.
         """
-        from peft import get_peft_model
+        from peft import PeftModel, get_peft_model
+
+        if isinstance(self, PeftModel) or hasattr(self, "peft_config"):
+            raise ValueError("Policy already contains PEFT adapters; resume the existing adapter instead.")
 
         # If user provided a complete config, use it directly (with overrides)
         if peft_config is not None:

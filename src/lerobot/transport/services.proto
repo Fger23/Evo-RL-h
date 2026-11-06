@@ -42,12 +42,11 @@ service AsyncInference {
   rpc GetActions(Empty) returns (Actions);
   rpc SendPolicyInstructions(PolicySetup) returns (Empty);
   rpc Ready(Empty) returns (Empty);
-  // Optional hot-switch v1 capability-negotiated envelopes. These reuse the
-  // existing trusted pickle transport. A legacy client keeps the methods above.
-  // Control data: {protocol: "lerobot.hotswitch", version: 1, op: ...}.
-  rpc ControlPolicy(PolicySetup) returns (Actions);
-  // Data is an InferenceRequest; response is an identity-bearing InferenceResponse.
-  rpc Predict(PolicySetup) returns (Actions);
+  // Versioned resident-task extension. No remote paths are accepted here.
+  rpc HotSwitchStatus(Empty) returns (HotSwitchMessage);
+  rpc HotSwitchSession(HotSwitchMessage) returns (HotSwitchMessage);
+  rpc HotSwitchTask(HotSwitchMessage) returns (HotSwitchMessage);
+  rpc HotSwitchInfer(HotSwitchMessage) returns (HotSwitchMessage);
 }
 
 enum TransferState {
@@ -91,3 +90,10 @@ message PolicySetup {
 }
 
 message Empty {}
+
+// Payload is the existing trusted-network pickle transport, with explicit
+// capability/version negotiation. This does not add a new listening socket.
+message HotSwitchMessage {
+  uint32 protocol_version = 1;
+  bytes data = 2;
+}

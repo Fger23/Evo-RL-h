@@ -1,0 +1,54 @@
+{
+  "source_dataset_root": "/nfs/baiyuntian/assets/model/straighten_cash_joint_adapter_formal_20261104_r2/input_dataset",
+  "base_path": "/nfs/zxlong10/models/lerobot/pi05_base",
+  "vision_repo_id": "/nfs/zxlong10/models/google/siglip-so400m-patch14-384",
+  "language_repo_id": "/nfs/zxlong10/models/google/gemma-3-270m",
+  "tokenizer_name": "/nfs/zxlong10/models/paligemma-3b-pt-224",
+  "gpu": null,
+  "allowed_gpu_indices": [
+    5,
+    6
+  ],
+  "shared_gpu_indices": [
+    6
+  ],
+  "coordination_root": "/nfs/lerobot/s101/hot_switch/20261103",
+  "seed": 1000,
+  "rtc_training_max_delay": 37,
+  "acp_indicator_dropout_prob": 0.3,
+  "value_use_gradient_checkpointing": true,
+  "profiles": {
+    "formal": {
+      "scope": "User-authorized fresh full training of task A only: value 50000, genuine full ACP labels, joint LoRA/TRC 160000. No pilot resume or hardware.",
+      "value_steps": 50000,
+      "value_batch_size": 8,
+      "value_save_freq": 1000,
+      "adapter_steps": 160000,
+      "adapter_batch_size": 8,
+      "adapter_save_freq": 5000,
+      "num_workers": 4
+    }
+  },
+  "schedule": {
+    "value_warmup_steps": 500,
+    "value_decay_steps": 8000,
+    "adapter_warmup_steps": 1000,
+    "adapter_decay_steps": 30000,
+    "provenance": "Preserve the actual prior 50000/160000 training recipe; decay lengths differ from total budgets intentionally. Fresh optimizers and step 0, not the pilot optimizer/schedule."
+  },
+  "runtime": {
+    "python": "/nfs/lerobot/s101/hot_switch/20261103/env-clean/bin/python",
+    "memory_policy": "Each GPU main child caps its PyTorch allocator at actual CUDA free bytes after context creation / total. No reserve, dummy preallocation, automatic batch reduction or retry.",
+    "minimum_disk_free_bytes": 644245094400,
+    "single_task": "A",
+    "second_task_trained": false,
+    "physical_robot": false
+  },
+  "provenance": {
+    "user_authorized_budgets": "value 50000 then adapter 160000, task A only",
+    "old_value_config": "/nfs/baiyuntian/assets/models/straighten_cash_0928_to_1010/value_train/pistar06_iteration_1/checkpoints/last/pretrained_model/value_train_config.json",
+    "old_policy_config": "/nfs/baiyuntian/assets/models/straighten_cash_0928_to_1010/policy/straighten_cash_pi05_trc_d37/checkpoints/160000/pretrained_model/train_config.json",
+    "pilot_resume": "NOT_SELECTED: independent new run, source encoders and original common pi05 Base; pilot200 remains unchanged"
+  },
+  "original_source_dataset_root": "/nfs/lerobot/s101/hot_switch/20261103/data/straighten_cash_registered_r2"
+}

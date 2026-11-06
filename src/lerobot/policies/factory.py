@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import importlib
 import logging
+from pathlib import Path
 from typing import Any, TypedDict
 
 import torch
@@ -249,6 +250,20 @@ def make_pre_post_processors(
             policy configuration type.
     """
     if pretrained_path:
+        if isinstance(policy_cfg, PI05Config):
+            # A self-contained checkpoint owns its tokenizer. Explicit caller
+            # overrides still take precedence, including hot-switch task bundles.
+            overrides = dict(kwargs.get("preprocessor_overrides", {}))
+            tokenizer_overrides = dict(overrides.get("tokenizer_processor", {}))
+            if "tokenizer_name" not in tokenizer_overrides and "tokenizer" not in tokenizer_overrides:
+                tokenizer_copy = Path(pretrained_path) / "tokenizer"
+                if tokenizer_copy.is_dir():
+                    tokenizer_overrides["tokenizer_name"] = str(tokenizer_copy.resolve())
+                elif policy_cfg.tokenizer_name != "google/paligemma-3b-pt-224":
+                    tokenizer_overrides["tokenizer_name"] = policy_cfg.tokenizer_name
+            if tokenizer_overrides:
+                overrides["tokenizer_processor"] = tokenizer_overrides
+                kwargs["preprocessor_overrides"] = overrides
         # TODO(Steven): Temporary patch, implement correctly the processors for Gr00t
         if isinstance(policy_cfg, GrootConfig):
             # GROOT handles normalization in groot_pack_inputs_v3 step
@@ -423,7 +438,6 @@ def make_policy(
     ds_meta: LeRobotDatasetMetadata | None = None,
     env_cfg: EnvConfig | None = None,
     rename_map: dict[str, str] | None = None,
-    *,
     is_trainable: bool = False,
 ) -> PreTrainedPolicy:
     """
@@ -528,6 +542,7 @@ def make_policy(
             )
 
         policy = policy_cls.from_pretrained(**kwargs)
+        # Training resumes must optimize the restored adapter, never wrap it again.
         policy = PeftModel.from_pretrained(
             policy, peft_pretrained_path, config=peft_config, is_trainable=is_trainable
         )

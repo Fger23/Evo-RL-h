@@ -19,6 +19,7 @@ import logging
 import math
 from collections import deque
 from pathlib import Path
+from types import MethodType
 from typing import TYPE_CHECKING, Literal, TypedDict
 
 import torch
@@ -56,8 +57,8 @@ class ActionSelectKwargs(TypedDict, total=False):
     inference_delay: int | None
     prev_chunk_left_over: Tensor | None
     execution_horizon: int | None
-    prefix_steps: int
     action_prefix: Tensor | None
+    prefix_steps: int
 
 
 def _sample_training_rtc_prefix_mask(
@@ -145,6 +146,25 @@ def _apply_adarms_norm(norm: nn.Module, x: Tensor, cond: Tensor | None) -> tuple
     scale, shift, gate = dense(cond).chunk(3, dim=-1)
     normed = normed * (1 + scale.float()) + shift.float()
     return normed.to(x.dtype), gate.to(x.dtype)
+
+
+def _tokenwise_adarms_forward(self, x: Tensor, cond: Tensor | None = None):
+    if cond is not None and cond.ndim == 3:
+        return _apply_adarms_norm(self, x, cond)
+    return self._scalar_adarms_forward(x, cond=cond)
+
+
+def _install_tokenwise_adarms(model: nn.Module) -> None:
+    """Adapt this model's norms without modifying the installed Transformers.
+
+    Cached expert inference calls GemmaDecoderLayer directly, whereas the joint
+    training forward uses _apply_adarms_norm. Both paths need the same per-token
+    conditioning semantics. Parameter/module names and scalar behavior stay intact.
+    """
+    for norm in model.modules():
+        if getattr(norm, "dense", None) is not None and hasattr(norm, "_norm") and not hasattr(norm, "_scalar_adarms_forward"):
+            norm._scalar_adarms_forward = norm.forward
+            norm.forward = MethodType(_tokenwise_adarms_forward, norm)
 
 
 def get_safe_dtype(target_dtype, device_type):
@@ -472,6 +492,7 @@ class PaliGemmaWithExpertModel(
 
         self.paligemma = PaliGemmaForConditionalGeneration(config=vlm_config_hf)
         self.gemma_expert = GemmaForCausalLM(config=action_expert_config_hf)
+        _install_tokenwise_adarms(self.gemma_expert.model)
         self.gemma_expert.model.embed_tokens = None
 
         self.to_bfloat16_for_selected_params(precision)
@@ -893,6 +914,26 @@ class PI05Pytorch(nn.Module):  # see openpi `PI0Pytorch`
         bsize = tokens.shape[0]
         device = tokens.device
 
+        # Training-Time RTC is clean-prefix conditioning, independent of legacy
+        # inference-time gradient guidance. Clamp the normalized prefix throughout
+        # integration and give known action tokens time=0 as in training.
+        prefix_steps = int(kwargs.get("prefix_steps", 0))
+        action_prefix = kwargs.get("action_prefix")
+        if prefix_steps < 0 or prefix_steps > self.config.rtc_training_max_delay:
+            raise ValueError("prefix_steps exceeds the checkpoint's Training-Time RTC range")
+        if prefix_steps and self._rtc_enabled():
+            raise ValueError("Clean-prefix Training-Time RTC cannot be mixed with legacy RTC")
+        if (action_prefix is None) != (prefix_steps == 0):
+            raise ValueError("action_prefix must be supplied exactly when prefix_steps is positive")
+        prefix = None
+        if prefix_steps:
+            prefix = torch.as_tensor(action_prefix, device=device, dtype=torch.float32)
+            if prefix.ndim != 3 or prefix.shape[:2] != (bsize, prefix_steps):
+                raise ValueError("action_prefix must have shape (batch, prefix_steps, action_dim)")
+            if prefix.shape[-1] > self.config.max_action_dim or not torch.isfinite(prefix).all():
+                raise ValueError("action_prefix has incompatible dimension or non-finite values")
+            prefix = F.pad(prefix, (0, self.config.max_action_dim - prefix.shape[-1]))
+
         if noise is None:
             # Sample noise with padded dimension as expected by action_in_proj
             actions_shape = (
@@ -901,26 +942,6 @@ class PI05Pytorch(nn.Module):  # see openpi `PI0Pytorch`
                 self.config.max_action_dim,
             )  # Use config max_action_dim for internal processing
             noise = self.sample_noise(actions_shape, device)
-
-        # Training-Time RTC is clean conditioning, separate from gradient-guided RTC.
-        prefix_steps = kwargs.get("prefix_steps", 0)
-        action_prefix = kwargs.get("action_prefix")
-        if not isinstance(prefix_steps, int) or not 0 <= prefix_steps <= self.config.rtc_training_max_delay:
-            raise ValueError("prefix_steps must be within the checkpoint's rtc_training_max_delay")
-        if prefix_steps and self._rtc_enabled():
-            raise ValueError("Clean-prefix Training-Time RTC cannot be combined with legacy RTC guidance")
-        if prefix_steps:
-            if action_prefix is None or action_prefix.ndim != 3:
-                raise ValueError("action_prefix must be a normalized (B, prefix_steps, action_dim) tensor")
-            if action_prefix.shape[:2] != (bsize, prefix_steps):
-                raise ValueError("action_prefix batch/length mismatch")
-            if action_prefix.shape[-1] != self.config.output_features[ACTION].shape[0]:
-                raise ValueError("action_prefix action dimension mismatch")
-            if not torch.isfinite(action_prefix).all():
-                raise ValueError("action_prefix contains NaN/Inf")
-            clean_prefix = pad_vector(action_prefix.to(device=device, dtype=noise.dtype), self.config.max_action_dim)
-        elif action_prefix is not None:
-            raise ValueError("action_prefix must be None for bootstrap prefix_steps=0")
 
         prefix_embs, prefix_pad_masks, prefix_att_masks = self.embed_prefix(images, img_masks, tokens, masks)
         prefix_att_2d_masks = make_att_2d_masks(prefix_pad_masks, prefix_att_masks)
@@ -940,12 +961,12 @@ class PI05Pytorch(nn.Module):  # see openpi `PI0Pytorch`
         dt = -1.0 / num_steps
 
         x_t = noise.clone()
-        if prefix_steps:
-            x_t[:, :prefix_steps] = clean_prefix
+        if prefix is not None:
+            x_t[:, :prefix_steps] = prefix.to(x_t.dtype)
         for step in range(num_steps):
             time = 1.0 + step * dt
             time_tensor = torch.tensor(time, dtype=torch.float32, device=device).expand(bsize)
-            if prefix_steps:
+            if prefix is not None:
                 time_tensor = time_tensor[:, None].expand(bsize, self.config.chunk_size).clone()
                 time_tensor[:, :prefix_steps] = 0
 
@@ -974,8 +995,8 @@ class PI05Pytorch(nn.Module):  # see openpi `PI0Pytorch`
                 v_t = denoise_step_partial_call(x_t)
 
             x_t = x_t + dt * v_t
-            if prefix_steps:
-                x_t[:, :prefix_steps] = clean_prefix
+            if prefix is not None:
+                x_t[:, :prefix_steps] = prefix.to(x_t.dtype)
 
             if self.rtc_processor is not None and self.rtc_processor.is_debug_enabled():
                 self.rtc_processor.track(time=time, x_t=x_t, v_t=v_t)
@@ -1183,11 +1204,9 @@ class PI05Policy(PreTrainedPolicy):
                 from safetensors.torch import load_file
 
                 original_state_dict = load_file(resolved_file)
-                print("✓ Loaded state dict from model.safetensors")
+                print("Loaded state dict from model.safetensors")
             except Exception as e:
-                print(f"Could not load state dict from remote files: {e}")
-                print("Returning model without loading pretrained weights")
-                return model
+                raise RuntimeError(f"Failed to load PI05 pretrained weights from {pretrained_name_or_path}") from e
 
             # First, fix any key differences # see openpi `model.py, _fix_pytorch_state_dict_keys`
             fixed_state_dict = model._fix_pytorch_state_dict_keys(original_state_dict, model.config)
@@ -1242,7 +1261,9 @@ class PI05Policy(PreTrainedPolicy):
                 print("All keys loaded successfully!")
 
         except Exception as e:
-            print(f"Warning: Could not remap state dict keys: {e}")
+            # Never silently serve/train a randomly initialized Base when a
+            # requested checkpoint failed to load or its schema is incompatible.
+            raise RuntimeError(f"PI05 checkpoint restoration failed: {pretrained_name_or_path}") from e
 
         return model
 
@@ -1490,10 +1511,11 @@ class PI05Policy(PreTrainedPolicy):
 
     def _get_default_peft_targets(self) -> dict[str, any]:
         """Return default PEFT target modules for PI0.5 fine-tuning."""
-        common_projections = (
-            "state_proj|action_in_proj|action_out_proj|action_time_mlp_in|action_time_mlp_out"
+        target_modules = (
+            r"(model\.paligemma_with_expert\.(paligemma(\.model)?\.language_model(\.model)?|gemma_expert\.model)"
+            r"\.layers\.\d+\.self_attn\.(q|v)_proj|"
+            r"model\.(action_in_proj|action_out_proj|time_mlp_in|time_mlp_out))"
         )
-        target_modules = rf"(.*\.gemma_expert\..*\.self_attn\.(q|v)_proj|model\.({common_projections}))"
         return {
             "target_modules": target_modules,
             "modules_to_save": [],

@@ -64,13 +64,6 @@ class PolicyServerConfig:
         default=DEFAULT_OBS_QUEUE_TIMEOUT, metadata={"help": "Timeout for observation queue in seconds"}
     )
 
-    # Only the server operator may select local registry/model/observation paths.
-    # Runtime clients select registered task IDs; they never submit weight paths.
-    hotswitch_registry: str = field(default="", metadata={"help": "Trusted startup task registry JSON"})
-    hotswitch_device: str = field(default="cpu", metadata={"help": "Device for all resident policies"})
-    hotswitch_mode: str = field(default="shared", metadata={"help": "shared or dual resident backend"})
-    hotswitch_initial_task: str = field(default="", metadata={"help": "Optional initial ready task ID"})
-
     def __post_init__(self):
         """Validate configuration after initialization."""
         if self.port < 1 or self.port > 65535:
@@ -84,9 +77,6 @@ class PolicyServerConfig:
 
         if self.obs_queue_timeout < 0:
             raise ValueError(f"obs_queue_timeout must be non-negative, got {self.obs_queue_timeout}")
-
-        if self.hotswitch_mode not in ("shared", "dual"):
-            raise ValueError("hotswitch_mode must be shared or dual")
 
     @classmethod
     def from_dict(cls, config_dict: dict) -> "PolicyServerConfig":

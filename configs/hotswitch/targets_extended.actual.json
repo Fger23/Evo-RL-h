@@ -1,0 +1,3988 @@
+{
+  "vlm": [
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.down_proj"
+  ],
+  "expert": [
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.down_proj"
+  ],
+  "projections": [
+    "model.action_in_proj",
+    "model.action_out_proj",
+    "model.time_mlp_in",
+    "model.time_mlp_out"
+  ],
+  "vision": [],
+  "target_modules": [
+    "model.action_in_proj",
+    "model.action_out_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.v_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.down_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.gate_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.up_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.k_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.o_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.q_proj",
+    "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.v_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.down_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.gate_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.up_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.k_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.o_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.q_proj",
+    "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.v_proj",
+    "model.time_mlp_in",
+    "model.time_mlp_out"
+  ],
+  "named_modules": [
+    {
+      "name": "",
+      "type": "PI05Policy"
+    },
+    {
+      "name": "model",
+      "type": "PI05Pytorch"
+    },
+    {
+      "name": "model.paligemma_with_expert",
+      "type": "PaliGemmaWithExpertModel"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma",
+      "type": "PaliGemmaForConditionalGeneration"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model",
+      "type": "PaliGemmaModel"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower",
+      "type": "SiglipVisionModel"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model",
+      "type": "SiglipVisionTransformer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings",
+      "type": "SiglipVisionEmbeddings"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding",
+      "type": "Conv2d"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.position_embedding",
+      "type": "Embedding"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder",
+      "type": "SiglipEncoder"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers",
+      "type": "ModuleList"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26",
+      "type": "SiglipEncoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.layer_norm1",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.self_attn",
+      "type": "SiglipAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.self_attn.out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.layer_norm2",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.mlp",
+      "type": "SiglipMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.mlp.activation_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.mlp.fc1",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.mlp.fc2",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.post_layernorm",
+      "type": "LayerNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.multi_modal_projector",
+      "type": "PaliGemmaMultiModalProjector"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.multi_modal_projector.linear",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model",
+      "type": "GemmaModel"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.embed_tokens",
+      "type": "Embedding"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers",
+      "type": "ModuleList"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.0.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.1.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.2.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.3.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.4.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.5.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.6.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.7.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.8.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.9.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.10.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.11.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.12.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.13.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.14.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.15.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.16.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.layers.17.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.norm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.model.language_model.rotary_emb",
+      "type": "GemmaRotaryEmbedding"
+    },
+    {
+      "name": "model.paligemma_with_expert.paligemma.lm_head",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert",
+      "type": "GemmaForCausalLM"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model",
+      "type": "GemmaModel"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers",
+      "type": "ModuleList"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.0.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.1.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.2.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.3.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.4.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.5.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.6.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.7.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.8.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.9.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.10.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.11.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.12.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.13.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.14.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.15.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.16.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17",
+      "type": "GemmaDecoderLayer"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn",
+      "type": "GemmaAttention"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.q_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.k_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.v_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.self_attn.o_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp",
+      "type": "GemmaMLP"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.gate_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.up_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.down_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.mlp.act_fn",
+      "type": "PytorchGELUTanh"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.input_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.input_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.post_attention_layernorm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.layers.17.post_attention_layernorm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.norm",
+      "type": "GemmaRMSNorm"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.norm.dense",
+      "type": "Linear"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.model.rotary_emb",
+      "type": "GemmaRotaryEmbedding"
+    },
+    {
+      "name": "model.paligemma_with_expert.gemma_expert.lm_head",
+      "type": "Linear"
+    },
+    {
+      "name": "model.action_in_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.action_out_proj",
+      "type": "Linear"
+    },
+    {
+      "name": "model.time_mlp_in",
+      "type": "Linear"
+    },
+    {
+      "name": "model.time_mlp_out",
+      "type": "Linear"
+    }
+  ],
+  "provenance": {
+    "audit_mode": "actual_named_modules_on_torch_meta",
+    "base_config": "/nfs/zxlong10/models/lerobot/pi05_base/config.json",
+    "base_config_sha256": "367869712a2847c27e95c431ecb03f17bec4eee01a63995e2fb2d91940752b53",
+    "python": "/nfs/lerobot/s101/hot_switch/20261103/env-clean/bin/python",
+    "pythonpath": "/nfs/lerobot/s101/hot_switch/20261103/env_check_source/src",
+    "torch": "2.7.1",
+    "transformers": "4.53.3",
+    "peft": "0.19.1",
+    "siglip_adapted": false,
+    "weight_files_read": false,
+    "cuda_initialized": false,
+    "command_argv": [
+      "lerobot.scripts.hotswitch_training",
+      "audit_targets",
+      "--base-path",
+      "/nfs/zxlong10/models/lerobot/pi05_base",
+      "--output",
+      "/nfs/lerobot/s101/hot_switch/20261103/validation/targets_meta_r1/targets_extended.actual.json",
+      "--meta",
+      "--extended"
+    ]
+  }
+}

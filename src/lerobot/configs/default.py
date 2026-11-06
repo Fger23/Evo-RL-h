@@ -95,14 +95,6 @@ class PeftConfig:
     # the rank used for the adapter. In general a higher rank means more trainable parameters and closer to full
     # fine-tuning.
     r: int = 16
-    # None retains the PEFT library defaults for existing training configurations.
+    # None preserves PEFT's defaults for existing training commands.
     lora_alpha: int | None = None
     lora_dropout: float | None = None
-
-    def __post_init__(self):
-        if self.r <= 0:
-            raise ValueError("peft.r must be positive")
-        if self.lora_alpha is not None and self.lora_alpha <= 0:
-            raise ValueError("peft.lora_alpha must be positive")
-        if self.lora_dropout is not None and not 0 <= self.lora_dropout < 1:
-            raise ValueError("peft.lora_dropout must be in [0, 1)")

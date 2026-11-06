@@ -87,8 +87,7 @@ class RobotClient:
     prefix = "robot_client"
     logger = get_logger(prefix)
 
-    def __init__(self, config: RobotClientConfig, *, robot: Robot | None = None,
-                 connect_robot: bool = True, stub=None, channel=None):
+    def __init__(self, config: RobotClientConfig, *, robot=None, connect_robot=True):
         """Initialize RobotClient with unified configuration.
 
         Args:
@@ -97,10 +96,9 @@ class RobotClient:
         # Store configuration
         self.config = config
         self.robot = robot if robot is not None else make_robot_from_config(config.robot)
-        self._owns_robot_connection = False
+        self._owns_robot_connection = connect_robot
         if connect_robot:
             self.robot.connect()
-            self._owns_robot_connection = True
 
         lerobot_features = map_robot_keys_to_lerobot_features(self.robot)
 
@@ -114,10 +112,10 @@ class RobotClient:
             config.actions_per_chunk,
             config.policy_device,
         )
-        self.channel = channel or (None if stub is not None else grpc.insecure_channel(
+        self.channel = grpc.insecure_channel(
             self.server_address, grpc_channel_options(initial_backoff=f"{config.environment_dt:.4f}s")
-        ))
-        self.stub = stub or services_pb2_grpc.AsyncInferenceStub(self.channel)
+        )
+        self.stub = services_pb2_grpc.AsyncInferenceStub(self.channel)
         self.logger.info(f"Initializing client to connect to server at {self.server_address}")
 
         self.shutdown_event = threading.Event()
@@ -195,8 +193,7 @@ class RobotClient:
             self.robot.disconnect()
         self.logger.debug("Robot disconnected")
 
-        if self.channel is not None:
-            self.channel.close()
+        self.channel.close()
         if self.rtc_d_telemetry is not None:
             self.rtc_d_telemetry.close()
         self.logger.debug("Client stopped, channel closed")
