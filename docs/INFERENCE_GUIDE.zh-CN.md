@@ -1,50 +1,46 @@
-# Evo-RL：同一套代码，分别启动服务端和客户端
+# Evo-RL 服务端与双 SO101 客户端操作指南
 
-两端使用同一个 `Evo-RL-hot-switch` 仓库、同一个 `hot-switch/unified-r1` 分支。仓库里同时包含服务端和客户端，启动入口分别是 `scripts/server.sh` 和 `scripts/client.sh`。
+两端共用同一个 `Evo-RL-hot-switch` 仓库、同一个 `hot-switch/unified-r1` 分支。本指南采用原 README 的写法：先激活本机环境、绑定当前源码，再直接用 `python -m` 启动，参数逐行展开。
 
-服务端负责加载模型和 GPU 推理；客户端负责读取双 SO101 和三路相机、请求预测并执行动作。模型权重只需要保存在服务端。
+## 1. 服务端：直接复制执行
 
-## 1. 服务端完整启动命令
-
-从本机登录服务器：
+先登录服务器：
 
 ```bash
 ssh -p 2222 baiyuntian@10.61.5.1
 ```
 
-登录成功后，在服务器终端执行：
+登录后，在服务器终端完整复制下面这一段：
 
 ```bash
 cd /home/baiyuntian/baiyuntian/Evo-RL-hot-switch
-bash scripts/server.sh \
+
+source "$PWD/20261104_gpu1/runtime-clean/bin/activate"
+export PATH="$PWD/20261104_gpu1/runtime-clean/bin:$PWD/20261104_gpu1/runtime-base/bin:$PATH"
+export PYTHONPATH="$PWD/src"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONNOUSERSITE=1
+export LEROBOT_ASYNC_LOG_TO_FILE=0 HF_HUB_OFFLINE=1 WANDB_MODE=disabled
+export TOKENIZERS_PARALLELISM=false
+export OMP_NUM_THREADS=8 MKL_NUM_THREADS=8
+
+python -B -u -m lerobot.scripts.hotswitch_server \
   --gpu=1 \
   --host=10.61.5.1 \
-  --port=8100
+  --port=8100 \
+  --registry=/nfs/baiyuntian/assets/model/straighten_cash_joint_adapter_formal_20261104_r4_node3_gpu1/postrun_r1/bundles/registry.json \
+  --backend=shared \
+  --dtype=bfloat16
 ```
 
-脚本自动使用服务器已有的 Python 环境，绑定当前仓库的 `src/`，加载正式 A160000 和共享 Base，预热后监听 `10.61.5.1:8100`。看到包含 `ready` 和 `address` 的 JSON 后，再启动客户端。
+服务端加载正式 A160000 和共享 Base，在 `10.61.5.1:8100` 监听。看到包含 `ready` 和 `address` 的 JSON 后再启动客户端。进程以前台方式运行，日志直接写终端，tmux 可自行管理。
 
-在服务器任意目录，也可以直接用这一条命令启动：
+`--gpu=1` 指物理 GPU1，程序会核对授权 UUID；该卡在进程内显示为 `cuda:0`。`--port` 可改成你选定的空闲端口；客户端地址中的端口要同步修改。当前8099被其他用户占用，因此默认使用已验证的8100。
 
-```bash
-bash /home/baiyuntian/baiyuntian/Evo-RL-hot-switch/scripts/server.sh --gpu 1
-```
+环境激活和 `export` 在同一终端完成后，再次启动服务只需执行上面的 `python -B -u -m ...` 命令及其参数。
 
-当前服务器只授权物理 GPU1，脚本会核对 GPU UUID 并使用现有共享锁。进程内的 `cuda:0` 对应这张物理 GPU1。若卡上已有计算进程，启动会报错退出。
+## 2. 客户端：首次取得同一份代码
 
-如需手动激活服务器环境、在终端运行 Python，可执行：
-
-```bash
-cd /home/baiyuntian/baiyuntian/Evo-RL-hot-switch
-source scripts/activate.sh
-python server.py --gpu 1
-```
-
-以上两种方式选一种即可。使用 `bash scripts/server.sh` 时，环境选择和源码绑定由脚本完成。
-
-## 2. 客户端首次取得同一份代码
-
-下面的命令在连接双 SO101 的客户端机器执行，仅首次下载时运行。客户端仓库统一放在 `~/code/Evo-RL-hot-switch`：
+在连接双 SO101 的客户端机器执行，仓库放在 `~/code/Evo-RL-hot-switch`：
 
 ```bash
 mkdir -p "$HOME/code"
@@ -53,118 +49,109 @@ git clone --branch hot-switch/unified-r1 \
   "$HOME/code/Evo-RL-hot-switch"
 ```
 
-这会从服务器仓库取得同一份源码。客户端复用原有 Python 环境，权重仍保存在服务端。这里的目录创建属于首次安装；日常推理不会新建时间戳运行目录。
-
-如果这个客户端目录已经存在，更新源码时执行：
+目录已经存在时，更新源码执行：
 
 ```bash
 cd "$HOME/code/Evo-RL-hot-switch"
 git pull --ff-only origin hot-switch/unified-r1
 ```
 
-## 3. 客户端完整启动命令
+这是首次安装或更新源码的操作。日常推理不会创建时间戳运行目录。
 
-沿用原 `RTC_run.txt` 中的客户端环境：`~/miniforge3` 下的 `evo-rl`。在客户端新终端执行：
+## 3. 客户端：直接复制执行
+
+沿用原 `RTC_run.txt` 中的 `~/miniforge3` 和 `evo-rl` 环境。在客户端终端完整复制：
 
 ```bash
 source "$HOME/miniforge3/etc/profile.d/conda.sh"
 conda activate evo-rl
 cd "$HOME/code/Evo-RL-hot-switch"
-bash scripts/client.sh \
+
+export PYTHONPATH="$PWD/src"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONNOUSERSITE=1
+export CUDA_VISIBLE_DEVICES=""
+export LEROBOT_ASYNC_LOG_TO_FILE=0 HF_HUB_OFFLINE=1 WANDB_MODE=disabled
+export TOKENIZERS_PARALLELISM=false
+export OMP_NUM_THREADS=8 MKL_NUM_THREADS=8
+
+python -B -u -m lerobot.scripts.hotswitch_so101_client \
+  --config="$PWD/configs/hotswitch/client_so101.json" \
   --remote_policy.server_address=10.61.5.1:8100 \
   --task-id=A \
   --steps=0
 ```
 
-已经激活 `evo-rl` 并进入仓库根目录后，日常启动只需要：
+客户端使用本机 CPU，读取双 SO101 与三路相机，向服务端请求动作并控制机器人。`--steps=0` 表示持续运行到 Ctrl+C；例如 `--steps=300` 表示执行300条被确认的动作命令。
 
-```bash
-bash scripts/client.sh
-```
+两端代码相同，各自使用本机已有 Python 环境。大模型权重只保存在服务端。客户端使用原来的串口、相机和校准文件。
 
-已激活该环境时，在客户端任意目录也可以执行：
+## 4. 可直接修改的启动参数
 
-```bash
-bash "$HOME/code/Evo-RL-hot-switch/scripts/client.sh"
-```
-
-客户端脚本会使用本机已激活的环境，并把当前仓库的 `src/` 放在源码搜索路径首位。客户端默认连接 `10.61.5.1:8100`，使用任务 A，持续控制两台 SO101，直到按 Ctrl+C。默认模式就是实际机器人控制。
-
-## 4. 两端日常命令对照
-
-| 机器 | 在各自仓库根目录执行 |
+| 服务端参数 | 当前值 / 含义 |
 | --- | --- |
-| 服务端 | `bash scripts/server.sh --gpu 1` |
-| 客户端，原 `evo-rl` 环境已激活 | `bash scripts/client.sh` |
+| `--gpu` | `1`，当前节点授权的物理 GPU |
+| `--host` | `10.61.5.1`，本机监听地址 |
+| `--port` | `8100`，可自选空闲端口 |
+| `--registry` | 上面命令中的正式模型注册表路径 |
+| `--backend` | `shared`，共享 Base 常驻 Adapter |
+| `--dtype` | `bfloat16` |
 
-两端运行的是同一份代码。服务端环境复用服务器已有 `20261104_gpu1/runtime-clean`，客户端环境复用原 SO101 采集环境。各自机器的 Python 环境路径可以不同。
-
-tmux 由你自行创建和管理。程序以前台方式运行，日志输出到当前终端；启动不需要 `RUN_DIR`、`--session`、ready 文件或额外运行目录。
-
-## 5. 当前配置与可选命令
-
-服务端读取 `configs/hotswitch/server.json`；客户端读取 `configs/hotswitch/client_so101.json`。两份配置都在同一个仓库中。
-
-服务端显式指定现有地址和端口：
-
-```bash
-bash scripts/server.sh --gpu=1 --host=10.61.5.1 --port=8100
-```
-
-客户端按 `--参数=值` 格式指定服务地址；`--remote_policy.server_address` 与原 `--address` 等价：
-
-```bash
-bash scripts/client.sh \
-  --remote_policy.server_address=10.61.5.1:8100 \
-  --task-id=A \
-  --steps=0
-```
-
-服务端 `--port` 可以改成你选择的空闲端口，客户端地址中的端口必须与之相同。例如改为8123时，两边分别写 `--port=8123` 和 `--remote_policy.server_address=10.61.5.1:8123`。
-
-| 入口 | 可覆盖的参数 |
+| 客户端参数 | 当前值 / 含义 |
 | --- | --- |
-| 服务端 | `--gpu`、`--host`、`--port`、`--backend`、`--dtype`、`--registry`、`--config` |
-| 客户端 | `--remote_policy.server_address`（或 `--address`）、`--task-id`、`--steps`、`--config`、`--previous-session-id` |
+| `--config` | 本机 `configs/hotswitch/client_so101.json` |
+| `--remote_policy.server_address` | `10.61.5.1:8100`，也可写作 `--address` |
+| `--task-id` | `A` |
+| `--steps` | `0`，持续运行 |
+| `--previous-session-id` | 显式重连自己上一会话时填写 |
 
-以上两条命令使用本仓库的服务端和双 SO101 推理控制入口。机器人、相机和校准配置读取 `configs/hotswitch/client_so101.json`。你示例中的 `teleop`、`dataset` 参数属于录制入口；这两条命令的参数范围如上表。
+例如把服务端改为 `--port=8123`，客户端就对应使用 `--remote_policy.server_address=10.61.5.1:8123`。
 
-只检查配置，不启动模型或连接机器人：
+这些参数对应当前共享 Base 热切换服务和双臂推理控制入口。原 README 中 `teleop`、`dataset` 等参数属于录制入口；机器人硬件配置在当前客户端的 JSON 中读取。
 
-```bash
-# 在服务端仓库执行：检查服务配置和 GPU UUID
-bash scripts/server.sh --check
-```
+## 5. 当前双臂和相机配置
 
-```bash
-# 在客户端仓库、原 evo-rl 环境中执行：检查配置、已有校准和串口路径
-bash scripts/client.sh --check
-```
-
-客户端已使用你原 `RTC_run.txt` 的设备配置：
+`configs/hotswitch/client_so101.json` 已填入原 `RTC_run.txt` 的配置：
 
 | 配置项 | 当前值 |
 | --- | --- |
-| 机器人类型 / ID | `bi_so_follower` / `bimanual_follower` |
+| 类型 / ID | `bi_so_follower` / `bimanual_follower` |
 | 左臂 / 右臂串口 | `/dev/ttyACM0` / `/dev/ttyACM1` |
 | 左固定相机 | RealSense `260322276426` |
 | 左腕相机 | `/dev/v4l/by-path/pci-0000:c6:00.3-usb-0:2:1.0-video-index0` |
 | 右腕相机 | `/dev/v4l/by-path/pci-0000:c6:00.3-usb-0:1:1.0-video-index0` |
 | 图像 / 频率 | RGB 640×480 / 30fps |
-| 关节单位 | `training_units="normalized"`，两臂 `use_degrees=false` |
+| 单位 | `training_units="normalized"`，两臂 `use_degrees=false` |
 
-你已确认采集时没有添加 `use_degrees=true`，因此身体关节沿用校准行程刻度 −100～100，夹爪沿用0～100，单位配置已经填好。
+你已确认采集时没有添加 `use_degrees=true`，因此身体关节使用校准行程刻度 −100～100，夹爪使用0～100。默认 `max_delta_per_step=2`；原模型及其历史 manifest 保持原样。
 
-客户端沿用原校准目录 `HF_LEROBOT_CALIBRATION/robots/so_follower`，需要已有 `bimanual_follower_left.json` 和 `bimanual_follower_right.json`；自定义过 `HF_HOME` 时仍遵循该设置。串口与相机路径应对应原先的左右设备，程序不会自动交换设备、自动校准或执行 motor setup。
+客户端沿用 `HF_LEROBOT_CALIBRATION/robots/so_follower`，需要已有 `bimanual_follower_left.json` 和 `bimanual_follower_right.json`。自定义过 `HF_HOME` 时仍遵循该设置。程序不会自动交换设备、自动校准或执行 motor setup。
 
-若出现 `Failed to bind`，先检查监听端口：`ss -H -ltnpe 'sport = :8100'`。本机8099已被其他用户占用，因此本仓库两端默认使用8100。更新旧客户端源码后使用新的默认地址；暂时保留旧源码时，可用 `bash scripts/client.sh --address=10.61.5.1:8100` 连接。
+## 6. 检查、停止与重连
 
-默认每步最大位置变化为2个控制单位，配置项为 `max_delta_per_step`。服务器接口使用明文 RPC，客户端需要能访问服务器私网地址；请在原可信内网使用。
+在各自终端完成前面的环境激活和源码绑定后，可先检查配置：
 
-## 6. 停止与重新连接
+```bash
+# 服务端：只检查配置和 GPU UUID，不加载模型
+python -B -m lerobot.scripts.hotswitch_server \
+  --gpu=1 \
+  --host=10.61.5.1 \
+  --port=8100 \
+  --check
+```
 
-在客户端按 Ctrl+C，程序会尝试保持当前关节位置并关闭通信，保留力矩。在服务端按 Ctrl+C，服务停止并释放 GPU 锁。
+```bash
+# 客户端：检查配置、已有校准和串口路径，不连接机器人
+python -B -m lerobot.scripts.hotswitch_so101_client \
+  --remote_policy.server_address=10.61.5.1:8100 \
+  --check
+```
 
-如果客户端提示服务端已有会话，先结束自己原来的客户端，再用上次启动输出的 `session_id` 作为 `--previous-session-id` 参数重新连接。程序不会自动抢占其他客户端会话。
+如果监听失败，在服务器检查端口：
 
-已完成 CPU 回归和 GPU1 实际模型加载、离线观测 RPC 推理验证；尚未进行双 SO101 实机运行验收。当前 refill 会同步推理并保持位置，实际控制包含推理等待时间。
+```bash
+ss -H -ltnpe 'sport = :8100'
+```
+
+客户端按 Ctrl+C 会尝试保持当前位置并关闭通信，保留力矩；服务端按 Ctrl+C 会停止服务并释放 GPU 锁。已有会话时，先结束自己原来的客户端，再将上次输出的 `session_id` 通过 `--previous-session-id` 显式传入，程序不会自动抢占会话。
+
+服务使用明文 RPC，客户端需要能访问服务器私网地址，请在原可信内网使用。已完成 GPU1 模型加载和离线观测 RPC 验证，尚未进行双 SO101 实机运行验收。
