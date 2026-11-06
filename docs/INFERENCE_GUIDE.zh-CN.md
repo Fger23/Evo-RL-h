@@ -1,6 +1,6 @@
 # Evo-RL 服务端与双 SO101 客户端操作指南
 
-两端共用同一个 `Evo-RL-hot-switch` 仓库、同一个 `hot-switch/unified-r1` 分支。本指南采用原 README 的写法：先激活本机环境、绑定当前源码，再直接用 `python -m` 启动，参数逐行展开。
+两端共用同一个仓库和代码版本，GitHub `main` 为当前发布分支。客户端实际仓库目录为 `D:\byt\Evo-RL-h`。本指南采用原 README 的写法：先激活本机环境、绑定当前源码，再直接用 `python -m` 启动，参数逐行展开。
 
 ## 1. 服务端：直接复制执行
 
@@ -38,34 +38,70 @@ python -B -u -m lerobot.scripts.hotswitch_server \
 
 环境激活和 `export` 在同一终端完成后，再次启动服务只需执行上面的 `python -B -u -m ...` 命令及其参数。
 
-## 2. 客户端：首次取得同一份代码
+## 2. 客户端仓库位置与更新
 
-在连接双 SO101 的客户端机器执行，仓库放在 `~/code/Evo-RL-hot-switch`：
+客户端实际目录为 **`D:\byt\Evo-RL-h`**。以下 Windows 命令使用 **PowerShell**；如果从 WSL 运行，同一目录的默认映射为 `/mnt/d/byt/Evo-RL-h`。
 
-```bash
-mkdir -p "$HOME/code"
-git clone --branch hot-switch/unified-r1 \
-  https://github.com/Fger23/Evo-RL-h.git \
-  "$HOME/code/Evo-RL-hot-switch"
+目录已经存在时，在客户端 PowerShell 中更新 `main`：
+
+```powershell
+Set-Location -LiteralPath 'D:\byt\Evo-RL-h'
+git pull --ff-only origin main
 ```
 
-目录已经存在时，更新源码执行：
+仅当尚未下载仓库、目标目录不存在时，才执行首次克隆：
 
-```bash
-cd "$HOME/code/Evo-RL-hot-switch"
-git pull --ff-only origin hot-switch/unified-r1
+```powershell
+git clone --branch main https://github.com/Fger23/Evo-RL-h.git 'D:\byt\Evo-RL-h'
 ```
 
-这是首次安装或更新源码的操作。日常推理不会创建时间戳运行目录。
+如果使用 WSL，在 WSL 终端更新同一份代码：
 
-## 3. 客户端：直接复制执行
+```bash
+cd /mnt/d/byt/Evo-RL-h
+git pull --ff-only origin main
+```
 
-沿用原 `RTC_run.txt` 中的 `~/miniforge3` 和 `evo-rl` 环境。在客户端终端完整复制：
+安装或更新源码与启动推理是独立操作；日常推理不会创建时间戳运行目录。
+
+## 3. 客户端：按实际终端选择命令
+
+### 3A. Windows PowerShell
+
+在已能执行 `conda activate evo-rl` 的客户端 PowerShell 中复制下面命令。PowerShell 使用行尾反引号续行，不能把 Bash 的 `source`、`export` 或行尾反斜杠直接粘贴到这里。
+
+当前 JSON 保存的是 `/dev/ttyACM*` 和 `/dev/v4l/by-path/*` 设备路径。原生 Windows 运行前，需在 `D:\byt\Evo-RL-h\configs\hotswitch\client_so101.json` 中将串口改为本机实际 COM 口、将 OpenCV 相机路径改为本机实际设备号，并使用该环境已有的校准文件。具体设备号以客户端为准，指南不预设左右 COM 映射。
+
+```powershell
+Set-Location -LiteralPath 'D:\byt\Evo-RL-h'
+conda activate evo-rl
+
+$env:PYTHONPATH = 'D:\byt\Evo-RL-h\src'
+$env:PYTHONDONTWRITEBYTECODE = '1'
+$env:PYTHONNOUSERSITE = '1'
+$env:CUDA_VISIBLE_DEVICES = ''
+$env:LEROBOT_ASYNC_LOG_TO_FILE = '0'
+$env:HF_HUB_OFFLINE = '1'
+$env:WANDB_MODE = 'disabled'
+$env:TOKENIZERS_PARALLELISM = 'false'
+$env:OMP_NUM_THREADS = '8'
+$env:MKL_NUM_THREADS = '8'
+
+python -B -u -m lerobot.scripts.hotswitch_so101_client `
+  --config='D:\byt\Evo-RL-h\configs\hotswitch\client_so101.json' `
+  --remote_policy.server_address=10.61.5.1:8100 `
+  --task-id=A `
+  --steps=0
+```
+
+### 3B. WSL / Bash
+
+如果继续使用原 Linux 环境和 Linux 设备路径，在能访问这些 USB 设备的 WSL 中执行下面命令。代码仍是 D 盘上的同一份仓库；Python 环境和校准文件使用 WSL 内已有的版本。
 
 ```bash
 source "$HOME/miniforge3/etc/profile.d/conda.sh"
 conda activate evo-rl
-cd "$HOME/code/Evo-RL-hot-switch"
+cd /mnt/d/byt/Evo-RL-h
 
 export PYTHONPATH="$PWD/src"
 export PYTHONDONTWRITEBYTECODE=1 PYTHONNOUSERSITE=1
@@ -83,7 +119,7 @@ python -B -u -m lerobot.scripts.hotswitch_so101_client \
 
 客户端使用本机 CPU，读取双 SO101 与三路相机，向服务端请求动作并控制机器人。`--steps=0` 表示持续运行到 Ctrl+C；例如 `--steps=300` 表示执行300条被确认的动作命令。
 
-两端代码相同，各自使用本机已有 Python 环境。大模型权重只保存在服务端。客户端使用原来的串口、相机和校准文件。
+两端代码相同，各自使用本机已有 Python 环境。大模型权重只保存在服务端。更换仓库目录不会自动转换串口、相机或校准路径。
 
 ## 4. 可直接修改的启动参数
 
@@ -110,7 +146,7 @@ python -B -u -m lerobot.scripts.hotswitch_so101_client \
 
 ## 5. 当前双臂和相机配置
 
-`configs/hotswitch/client_so101.json` 已填入原 `RTC_run.txt` 的配置：
+客户端配置文件是 `D:\byt\Evo-RL-h\configs\hotswitch\client_so101.json`；WSL 中对应 `/mnt/d/byt/Evo-RL-h/configs/hotswitch/client_so101.json`。下面表格列的是已保存的原 Linux / WSL 设备配置：
 
 | 配置项 | 当前值 |
 | --- | --- |
@@ -128,7 +164,7 @@ python -B -u -m lerobot.scripts.hotswitch_so101_client \
 
 ## 6. 检查、停止与重连
 
-在各自终端完成前面的环境激活和源码绑定后，可先检查配置：
+在各自终端完成相应的环境激活和源码绑定后，可先检查配置。服务端仍使用 Linux / Bash 命令：
 
 ```bash
 # 服务端：只检查配置和 GPU UUID，不加载模型
@@ -139,12 +175,25 @@ python -B -m lerobot.scripts.hotswitch_server \
   --check
 ```
 
+客户端 PowerShell 检查（先完成3A中的环境激活和源码绑定）：
+
+```powershell
+python -B -m lerobot.scripts.hotswitch_so101_client `
+  --config='D:\byt\Evo-RL-h\configs\hotswitch\client_so101.json' `
+  --remote_policy.server_address=10.61.5.1:8100 `
+  --check
+```
+
+客户端 WSL 检查（先完成3B中的环境激活和源码绑定）：
+
 ```bash
-# 客户端：检查配置、已有校准和串口路径，不连接机器人
 python -B -m lerobot.scripts.hotswitch_so101_client \
+  --config="$PWD/configs/hotswitch/client_so101.json" \
   --remote_policy.server_address=10.61.5.1:8100 \
   --check
 ```
+
+以上客户端检查会核对配置、已有校准和串口路径，不连接机器人。
 
 如果监听失败，在服务器检查端口：
 
