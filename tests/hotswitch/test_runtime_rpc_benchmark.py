@@ -1,6 +1,7 @@
 """Actual gRPC benchmark integration with CPU tensors and a simulated controller."""
 
 import copy
+import gc
 import json
 import tempfile
 import unittest
@@ -95,7 +96,8 @@ class RpcBenchmarkTests(unittest.TestCase):
             )
         self.runtime = HotSwitchRuntime(backend)
         self.runtime.preload()
-        self.server = grpc.server(futures.ThreadPoolExecutor(max_workers=4))
+        self.executor = futures.ThreadPoolExecutor(max_workers=4)
+        self.server = grpc.server(self.executor)
         services_pb2_grpc.add_AsyncInferenceServicer_to_server(
             PolicyServer(PolicyServerConfig(), hotswitch_runtime=self.runtime), self.server
         )
@@ -111,6 +113,10 @@ class RpcBenchmarkTests(unittest.TestCase):
     def tearDown(self):
         self.source_patch.stop()
         self.server.stop(0).wait(3)
+        self.executor.shutdown(wait=True, cancel_futures=True)
+        # Failure-path traceback cycles can retain safetensors mmap views.
+        # NFS cannot remove their .nfs* files until those views are released.
+        gc.collect()
         self.temporary.cleanup()
 
     def rows(self, name):
