@@ -203,6 +203,8 @@ all = [
 ]
 
 [project.scripts]
+lerobot-hotswitch="lerobot.scripts.hotswitch_cli:main"
+lerobot-hotswitch-rpc-benchmark="lerobot.scripts.hotswitch_rpc_benchmark:main"
 lerobot-calibrate="lerobot.scripts.lerobot_calibrate:main"
 lerobot-find-cameras="lerobot.scripts.lerobot_find_cameras:main"
 lerobot-find-port="lerobot.scripts.lerobot_find_port:main"
